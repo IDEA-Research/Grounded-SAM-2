@@ -1,9 +1,12 @@
 # Grounded-SAM-2
-Grounded SAM 2: Ground and Track Anything with Grounding DINO and SAM 2
+Grounded SAM 2: Ground and Track Anything with Grounding DINO, Grounding DINO 1.5 and SAM 2
 
 
 ## Contents
-
+- [Installation](#installation)
+- [Grounded-SAM-2 Demo](#grounded-sam-2-demo)
+  - [Grounded-SAM-2 Image Demo](#grounded-sam-2-image-demo-with-grounding-dino)
+  - [Grounded-SAM-2 Image Demo (with Grounding DINO 1.5)](#grounded-sam-2-image-demo-with-grounding-dino-15--16)
 
 ## Installation
 
@@ -13,24 +16,32 @@ Since we need the CUDA compilation environment to compile the `Deformable Attent
 export CUDA_HOME=/path/to/cuda-12.1/
 ```
 
-Install `segment-anything-2`:
+Install `Segment Anything 2`:
 
 ```bash
 pip install -e .
 ```
 
-Install `grounding dino`:
+Install `Grounding DINO`:
 
 ```bash
 pip install --no-build-isolation -e grounding_dino
 ```
 
-Download the pretrained `grounding dino` and `sam 2` checkpoints:
+Downgrade the version of the `supervision` library to `0.6.0` to use its original API for visualization (we will update our code to be compatible with the latest version of `supervision` in the future release):
+
+```bash
+pip install supervision==0.6.0
+```
+
+Download the pretrained `SAM 2` checkpoints:
 
 ```bash
 cd checkpoints
 bash download_ckpts.sh
 ```
+
+Download the pretrained `Grounding DINO` checkpoints:
 
 ```bash
 cd gdino_checkpoints
@@ -38,9 +49,8 @@ wget https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alp
 wget https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha2/groundingdino_swinb_cogcoor.pth
 ```
 
-## Run demo
-### Grounded-SAM-2 Image Demo
-
+## Grounded-SAM-2 Demo
+### Grounded-SAM-2 Image Demo (with Grounding DINO)
 Note that `Grounding DINO` has already been supported in [Huggingface](https://huggingface.co/IDEA-Research/grounding-dino-tiny), so we provide two choices for running `Grounded-SAM-2` model:
 - Use huggingface API to inference Grounding DINO (which is simple and clear)
 
@@ -52,4 +62,20 @@ python grounded_sam2_hf_model_demo.py
 
 ```bash
 python grounded_sam2_local_demo.py
+```
+
+### Grounded-SAM-2 Image Demo (with Grounding DINO 1.5 & 1.6)
+
+We've already released our most capable open-set detection model [Grounding DINO 1.5 & 1.6](https://github.com/IDEA-Research/Grounding-DINO-1.5-API), which can be combined with SAM 2 for stronger open-set detection and segmentation capability. You can apply the API token first and run Grounded-SAM-2 with Grounding DINO 1.5 as follows:
+
+Install the latest DDS cloudapi:
+
+```bash
+pip install dds-cloudapi-sdk
+```
+
+Apply your API token from our official website here: [request API token](https://deepdataspace.com/request_api).
+
+```bash
+python grounded_sam2_gd1.5_demo.py
 ```

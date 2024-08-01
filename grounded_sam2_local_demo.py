@@ -94,8 +94,8 @@ img = cv2.imread(img_path)
 detections = sv.Detections(
     xyxy=input_boxes,  # (n, 4)
     mask=masks,  # (n, h, w)
-    
 )
+
 box_annotator = sv.BoxAnnotator()
 annotated_frame = box_annotator.annotate(scene=img.copy(), detections=detections, labels=labels)
 cv2.imwrite("groundingdino_annotated_image.jpg", annotated_frame)
