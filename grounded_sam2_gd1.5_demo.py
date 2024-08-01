@@ -18,7 +18,7 @@ from sam2.sam2_image_predictor import SAM2ImagePredictor
 Prompt Grounding DINO 1.5 with Text for Box Prompt Generation with Cloud API
 """
 # Step 1: initialize the config
-token = "3491a2a256fb7ed01b2e757b713c4cb0"
+token = "Your API token here"
 config = Config(token)
 
 # Step 2: initialize the client
