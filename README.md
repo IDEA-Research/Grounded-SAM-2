@@ -24,3 +24,32 @@ Install `grounding dino`:
 ```bash
 pip install --no-build-isolation -e grounding_dino
 ```
+
+Download the pretrained `grounding dino` and `sam 2` checkpoints:
+
+```bash
+cd checkpoints
+bash download_ckpts.sh
+```
+
+```bash
+cd gdino_checkpoints
+wget https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha/groundingdino_swint_ogc.pth
+wget https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha2/groundingdino_swinb_cogcoor.pth
+```
+
+## Run demo
+### Grounded-SAM-2 Image Demo
+
+Note that `Grounding DINO` has already been supported in [Huggingface](https://huggingface.co/IDEA-Research/grounding-dino-tiny), so we provide two choices for running `Grounded-SAM-2` model:
+- Use huggingface API to inference Grounding DINO (which is simple and clear)
+
+```bash
+python grounded_sam2_hf_model_demo.py
+```
+
+- Load local pretrained Grounding DINO checkpoint and inference with Grounding DINO original API (make sure you've already downloaded the pretrained checkpoint)
+
+```bash
+python grounded_sam2_local_demo.py
+```
