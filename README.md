@@ -141,4 +141,13 @@ If you find this project helpful for your research, please consider citing the f
       archivePrefix={arXiv},
       primaryClass={cs.CV}
 }
+
+@misc{jiang2024trex2,
+      title={T-Rex2: Towards Generic Object Detection via Text-Visual Prompt Synergy}, 
+      author={Qing Jiang and Feng Li and Zhaoyang Zeng and Tianhe Ren and Shilong Liu and Lei Zhang},
+      year={2024},
+      eprint={2403.14610},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
 ```
