@@ -3,7 +3,7 @@ Grounded SAM 2: Ground and Track Anything with Grounding DINO, Grounding DINO 1.
 
 Grounded SAM 2 does not introduce significant methodological changes compared to [Grounded SAM](https://github.com/IDEA-Research/Grounded-Segment-Anything). Both approaches leverage the capabilities of open-world models to address complex visual tasks. Consequently, we try to **simplify the code implementation** in this repository, aiming to enhance user convenience.
 
-[![Video Name](notebooks/videos/bedroom/00000.jpg)](./demo_images/children_tracking_demo_video.mp4)
+[![Video Name](./notebooks/videos/bedroom/00000.jpg)](https://github.com/user-attachments/assets/83675ffd-86d8-439d-ac95-4dfb339e181a)
 
 ## Contents
 - [Installation](#installation)
