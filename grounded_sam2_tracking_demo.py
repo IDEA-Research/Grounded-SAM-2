@@ -8,6 +8,7 @@ from sam2.build_sam import build_sam2_video_predictor, build_sam2
 from sam2.sam2_image_predictor import SAM2ImagePredictor
 from transformers import AutoProcessor, AutoModelForZeroShotObjectDetection 
 from track_utils import sample_points_from_masks
+from video_utils import create_video_from_images
 
 
 """
@@ -152,21 +153,16 @@ for frame_idx, segments in video_segments.items():
         mask=masks, # (n, h, w)
         class_id=np.array(object_ids, dtype=np.int32),
     )
+    box_annotator = sv.BoxAnnotator()
+    annotated_frame = box_annotator.annotate(scene=img.copy(), detections=detections, labels=[ID_TO_OBJECTS[i] for i in object_ids])
     mask_annotator = sv.MaskAnnotator()
-    annotated_frame = mask_annotator.annotate(scene=img.copy(), detections=detections)
-    cv2.imwrite(f"annotated_frame_{frame_idx}.jpg", annotated_frame)
+    annotated_frame = mask_annotator.annotate(scene=annotated_frame, detections=detections)
+    cv2.imwrite(os.path.join(save_dir, f"annotated_frame_{frame_idx:05d}.jpg"), annotated_frame)
 
 
-# import cv2
-# import supervision as sv
-# # visualize each mask
-# for out_frame_idx, masks in video_segments.items():
-#     img = cv2.imread(os.path.join(video_dir, frame_names[out_frame_idx]))
-#     detections = sv.Detections(
-#         xyxy=np.array([[0, 0, 100, 100]]),  # (n, 4)
-#         mask=masks[1]
-#     )
-#     mask_annotator = sv.MaskAnnotator()
-#     annotated_frame = mask_annotator.annotate(scene=img.copy(), detections=detections)
-#     cv2.imwrite(f"annotated_frame_{out_frame_idx}.jpg", annotated_frame)
-#     import pdb; pdb.set_trace()
+"""
+Step 6: Convert the annotated frames to video
+"""
+
+output_video_path = "./children_tracking_demo_video.mp4"
+create_video_from_images(save_dir, output_video_path)
