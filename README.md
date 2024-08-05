@@ -1,7 +1,7 @@
 # Grounded-SAM-2
 Grounded SAM 2: Ground and Track Anything with Grounding DINO, Grounding DINO 1.5 and SAM 2
 
-Grounded SAM 2 does not introduce significant methodological changes compared to [Grounded SAM](https://github.com/IDEA-Research/Grounded-Segment-Anything). Both approaches leverage the capabilities of open-world models to address complex visual tasks. Consequently, we try to **simplify the code implementation** in this repository, aiming to enhance user convenience.
+Grounded SAM 2 does not introduce significant methodological changes compared to [Grounded SAM: Assembling Open-World Models for Diverse Visual Tasks](https://arxiv.org/abs/2401.14159). Both approaches leverage the capabilities of open-world models to address complex visual tasks. Consequently, we try to **simplify the code implementation** in this repository, aiming to enhance user convenience.
 
 [![Video Name](./notebooks/videos/bedroom/00000.jpg)](https://github.com/user-attachments/assets/d4335611-4e90-4090-97a1-7537d59a5dfc)
 
@@ -11,6 +11,7 @@ Grounded SAM 2 does not introduce significant methodological changes compared to
   - [Grounded-SAM-2 Image Demo](#grounded-sam-2-image-demo-with-grounding-dino)
   - [Grounded-SAM-2 Image Demo (with Grounding DINO 1.5 & 1.6)](#grounded-sam-2-image-demo-with-grounding-dino-15--16)
   - [Grounded-SAM-2 Video Object Tracking Demo](#grounded-sam-2-video-object-tracking-demo)
+  - [Grounded-SAM-2 Video Object Tracking Demo (with Grounding DINO 1.5 & 1.6)](#grounded-sam-2-video-object-tracking-demo-with-grounding-dino-15--16)
 - [Citation](#citation)
 
 
