@@ -41,12 +41,6 @@ Install `Grounding DINO`:
 pip install --no-build-isolation -e grounding_dino
 ```
 
-Downgrade the version of the `supervision` library to `0.6.0` to use its original API for visualization (we will update our code to be compatible with the latest version of `supervision` in the future release):
-
-```bash
-pip install supervision==0.6.0
-```
-
 Download the pretrained `SAM 2` checkpoints:
 
 ```bash
@@ -71,11 +65,15 @@ Note that `Grounding DINO` has already been supported in [Huggingface](https://h
 python grounded_sam2_hf_model_demo.py
 ```
 
+> [!NOTE]
+> 🚨 If you encounter network issues while using the `HuggingFace` model, you can resolve them by setting the appropriate mirror source as `export HF_ENDPOINT=https://hf-mirror.com`
+
 - Load local pretrained Grounding DINO checkpoint and inference with Grounding DINO original API (make sure you've already downloaded the pretrained checkpoint)
 
 ```bash
 python grounded_sam2_local_demo.py
 ```
+
 
 ### Grounded-SAM-2 Image Demo (with Grounding DINO 1.5 & 1.6)
 

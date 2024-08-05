@@ -2,6 +2,8 @@ import cv2
 import torch
 import numpy as np
 import supervision as sv
+from supervision.draw.color import ColorPalette
+from supervision_utils import CUSTOM_COLOR_MAP
 from PIL import Image
 from sam2.build_sam import build_sam2
 from sam2.sam2_image_predictor import SAM2ImagePredictor
@@ -89,6 +91,7 @@ elif masks.ndim == 4:
 
 confidences = results[0]["scores"].cpu().numpy().tolist()
 class_names = results[0]["labels"]
+class_ids = np.array(list(range(len(class_names))))
 
 labels = [
     f"{class_name} {confidence:.2f}"
@@ -102,13 +105,21 @@ Visualize image with supervision useful API
 img = cv2.imread(img_path)
 detections = sv.Detections(
     xyxy=input_boxes,  # (n, 4)
-    mask=masks,  # (n, h, w)
+    mask=masks.astype(bool),  # (n, h, w)
+    class_id=class_ids
 )
 
-box_annotator = sv.BoxAnnotator()
-annotated_frame = box_annotator.annotate(scene=img.copy(), detections=detections, labels=labels)
+"""
+Note that if you want to use default color map,
+you can set color=ColorPalette.DEFAULT
+"""
+box_annotator = sv.BoxAnnotator(color=ColorPalette.from_hex(CUSTOM_COLOR_MAP))
+annotated_frame = box_annotator.annotate(scene=img.copy(), detections=detections)
+
+label_annotator = sv.LabelAnnotator(color=ColorPalette.from_hex(CUSTOM_COLOR_MAP))
+annotated_frame = label_annotator.annotate(scene=annotated_frame, detections=detections, labels=labels)
 cv2.imwrite("groundingdino_annotated_image.jpg", annotated_frame)
 
-mask_annotator = sv.MaskAnnotator()
+mask_annotator = sv.MaskAnnotator(color=ColorPalette.from_hex(CUSTOM_COLOR_MAP))
 annotated_frame = mask_annotator.annotate(scene=annotated_frame, detections=detections)
 cv2.imwrite("grounded_sam2_annotated_image_with_mask.jpg", annotated_frame)

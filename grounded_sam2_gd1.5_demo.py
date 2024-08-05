@@ -18,7 +18,7 @@ from sam2.sam2_image_predictor import SAM2ImagePredictor
 Prompt Grounding DINO 1.5 with Text for Box Prompt Generation with Cloud API
 """
 # Step 1: initialize the config
-token = "Your API token here"
+token = "Your API token"
 config = Config(token)
 
 # Step 2: initialize the client
@@ -101,19 +101,29 @@ elif masks.ndim == 4:
 Visualization the Predict Results
 """
 
+class_ids = np.array(list(range(len(class_names))))
+
 labels = [
     f"{class_name} {confidence:.2f}"
     for class_name, confidence
     in zip(class_names, confidences)
 ]
+
+"""
+Visualize image with supervision useful API
+"""
 img = cv2.imread(img_path)
 detections = sv.Detections(
     xyxy=input_boxes,  # (n, 4)
-    mask=masks,  # (n, h, w)
+    mask=masks.astype(bool),  # (n, h, w)
+    class_id=class_ids
 )
 
 box_annotator = sv.BoxAnnotator()
-annotated_frame = box_annotator.annotate(scene=img.copy(), detections=detections, labels=labels)
+annotated_frame = box_annotator.annotate(scene=img.copy(), detections=detections)
+
+label_annotator = sv.LabelAnnotator()
+annotated_frame = label_annotator.annotate(scene=annotated_frame, detections=detections, labels=labels)
 cv2.imwrite("groundingdino_annotated_image.jpg", annotated_frame)
 
 mask_annotator = sv.MaskAnnotator()

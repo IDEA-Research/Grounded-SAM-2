@@ -64,8 +64,6 @@ masks, scores, logits = sam2_predictor.predict(
     multimask_output=False,
 )
 
-import pdb; pdb.set_trace()
-
 """
 Post-process the output of the model to get the masks, scores, and logits for visualization
 """
@@ -81,6 +79,8 @@ elif masks.ndim == 4:
 confidences = confidences.numpy().tolist()
 class_names = labels
 
+class_ids = np.array(list(range(len(class_names))))
+
 labels = [
     f"{class_name} {confidence:.2f}"
     for class_name, confidence
@@ -93,11 +93,15 @@ Visualize image with supervision useful API
 img = cv2.imread(img_path)
 detections = sv.Detections(
     xyxy=input_boxes,  # (n, 4)
-    mask=masks,  # (n, h, w)
+    mask=masks.astype(bool),  # (n, h, w)
+    class_id=class_ids
 )
 
 box_annotator = sv.BoxAnnotator()
-annotated_frame = box_annotator.annotate(scene=img.copy(), detections=detections, labels=labels)
+annotated_frame = box_annotator.annotate(scene=img.copy(), detections=detections)
+
+label_annotator = sv.LabelAnnotator()
+annotated_frame = label_annotator.annotate(scene=annotated_frame, detections=detections, labels=labels)
 cv2.imwrite("groundingdino_annotated_image.jpg", annotated_frame)
 
 mask_annotator = sv.MaskAnnotator()
