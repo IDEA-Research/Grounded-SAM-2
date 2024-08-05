@@ -109,6 +109,13 @@ python grounded_sam2_tracking_demo.py
 
 We have observed that the video predictor in SAM 2 currently supports **only point prompts** (please feel free to point out any updates or functionalities we may have overlooked during development). However, Grounding DINO provides box prompts, which need to be converted into point prompts for use in video tracking. A straightforward approach is to directly sample the center point of the box as a point prompt. Nevertheless, this method may encounter certain issues in practical testing scenarios. To **get a more stable segmentation results**, we reuse the SAM 2 image predictor to get the prediction mask for each object first, then we **uniformly sample points from the prediction mask** to prompt SAM 2 video predictor.
 
+### Grounded-SAM-2 Video Object Tracking Demo (with Grounding DINO 1.5 & 1.6)
+
+We've also support video object tracking demo based on our stronger `Grounding DINO 1.5` model and `SAM 2`, you can try the following demo after applying the API keys for running `Grounding DINO 1.5`:
+
+```bash
+python grounded_sam2_tracking_demo_with_gd1.5.py
+```
 
 ### Citation
 
