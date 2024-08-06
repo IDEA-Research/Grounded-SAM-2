@@ -9,7 +9,7 @@ In this repo, we've supported the following demo with **simple implementations**
 
 Grounded SAM 2 does not introduce significant methodological changes compared to [Grounded SAM: Assembling Open-World Models for Diverse Visual Tasks](https://arxiv.org/abs/2401.14159). Both approaches leverage the capabilities of open-world models to address complex visual tasks. Consequently, we try to **simplify the code implementation** in this repository, aiming to enhance user convenience.
 
-[![Video Name](./notebooks/videos/bedroom/00000.jpg)](https://github.com/user-attachments/assets/d4335611-4e90-4090-97a1-7537d59a5dfc)
+[![Video Name](./assets/grounded_sam_2_intro.jpg)](https://github.com/user-attachments/assets/821a0529-5d33-427b-9ff9-e11ad1b64d07)
 
 ## Contents
 - [Installation](#installation)
