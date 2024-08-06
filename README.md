@@ -1,5 +1,11 @@
 # Grounded-SAM-2
-Grounded SAM 2: Ground and Track Anything with Grounding DINO, Grounding DINO 1.5 and SAM 2
+Grounded SAM 2: Ground and Track Anything with [Grounding DINO](https://arxiv.org/abs/2303.05499), [Grounding DINO 1.5](https://arxiv.org/abs/2405.10300) and [SAM 2](https://arxiv.org/abs/2408.00714).
+
+**Project Highlight**
+In this repo, we've supported the following demo with **simple implementations**:
+- **Ground and segment anything** with Grounding DINO, Grounding DINO 1.5 & 1.6 and SAM 2
+- **Ground and track anything** with Grounding DINO, Grounding DINO 1.5 & 1.6 and SAM 2
+- **Detect, segment and track visualization** based on the powerful [supervision](https://github.com/roboflow/supervision) library.
 
 Grounded SAM 2 does not introduce significant methodological changes compared to [Grounded SAM: Assembling Open-World Models for Diverse Visual Tasks](https://arxiv.org/abs/2401.14159). Both approaches leverage the capabilities of open-world models to address complex visual tasks. Consequently, we try to **simplify the code implementation** in this repository, aiming to enhance user convenience.
 
