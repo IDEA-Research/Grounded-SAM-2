@@ -12,6 +12,7 @@ Grounded SAM 2 does not introduce significant methodological changes compared to
   - [Grounded-SAM-2 Image Demo (with Grounding DINO 1.5 & 1.6)](#grounded-sam-2-image-demo-with-grounding-dino-15--16)
   - [Grounded-SAM-2 Video Object Tracking Demo](#grounded-sam-2-video-object-tracking-demo)
   - [Grounded-SAM-2 Video Object Tracking Demo (with Grounding DINO 1.5 & 1.6)](#grounded-sam-2-video-object-tracking-demo-with-grounding-dino-15--16)
+  - [Grounded-SAM-2 Video Object Tracking with Custom Video Input (using Grounding DINO 1.5 & 1.6)](#grounded-sam-2-video-object-tracking-demo-with-custom-video-input-with-grounding-dino-15--16)
 - [Citation](#citation)
 
 
@@ -138,6 +139,10 @@ VIDEO_PATH = "./assets/hippopotamus.mp4"
 TEXT_PROMPT = "hippopotamus."
 OUTPUT_VIDEO_PATH = "./hippopotamus_tracking_demo.mp4"
 ```
+
+After running our demo code, you can get the tracking results as follows:
+
+[![Video Name](./assets/hippopotamus_seg.jpg)](https://github.com/user-attachments/assets/1fbdc6f4-3e50-4221-9600-98c397beecdf)
 
 And we will automatically save the tracking visualization results in `OUTPUT_VIDEO_PATH`.
 

@@ -28,7 +28,7 @@ TEXT_PROMPT = "hippopotamus."
 OUTPUT_VIDEO_PATH = "./hippopotamus_tracking_demo.mp4"
 SOURCE_VIDEO_FRAME_DIR = "./custom_video_frames"
 SAVE_TRACKING_RESULTS_DIR = "./tracking_results"
-API_TOKEN_FOR_GD1_5 = "3491a2a256fb7ed01b2e757b713c4cb0"
+API_TOKEN_FOR_GD1_5 = "Your API token"
 
 """
 Step 1: Environment settings and model initialization for SAM 2
