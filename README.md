@@ -123,6 +123,27 @@ We've also support video object tracking demo based on our stronger `Grounding D
 python grounded_sam2_tracking_demo_with_gd1.5.py
 ```
 
+### Grounded-SAM-2 Video Object Tracking Demo with Custom Video Input (with Grounding DINO 1.5 & 1.6)
+
+Users can upload their own video file (e.g. `assets/hippopotamus.mp4`) and specify their custom text prompts for grounding and tracking with the following scripts:
+
+```bash
+python grounded_sam2_tracking_demo_with_video_input_gd1.5.py
+```
+
+You can specify the params in this file:
+
+```python
+VIDEO_PATH = "./assets/hippopotamus.mp4"
+TEXT_PROMPT = "hippopotamus."
+OUTPUT_VIDEO_PATH = "./hippopotamus_tracking_demo.mp4"
+```
+
+And we will automatically save the tracking visualization results in `OUTPUT_VIDEO_PATH`.
+
+> [!WARNING]
+> We initilize the box prompts on the first frame of the input video. If you want to start from different frame, you can refine `ann_frame_idx` by yourself in our code.
+
 ### Citation
 
 If you find this project helpful for your research, please consider citing the following BibTeX entry.
