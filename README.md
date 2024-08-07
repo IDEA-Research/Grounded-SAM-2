@@ -120,6 +120,9 @@ A simple pipeline visualization is as follows:
 
 ![Grounded SAM 2 Tracking Pipeline](./assets/grounded_sam2_tracking_pipeline_vis.png)
 
+> [!NOTE]
+> We've also supported using mask prediction results as prompt for SAM 2 video predictor, which returns a more stable tracking results.
+
 ### Grounded-SAM-2 Video Object Tracking Demo (with Grounding DINO 1.5 & 1.6)
 
 We've also support video object tracking demo based on our stronger `Grounding DINO 1.5` model and `SAM 2`, you can try the following demo after applying the API keys for running `Grounding DINO 1.5`:
