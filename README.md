@@ -136,7 +136,7 @@ python grounded_sam2_tracking_demo_with_gd1.5.py
 Users can upload their own video file (e.g. `assets/hippopotamus.mp4`) and specify their custom text prompts for grounding and tracking with the following scripts:
 
 ```bash
-python grounded_sam2_tracking_demo_with_video_input_gd1.5.py
+python grounded_sam2_tracking_demo_custom_video_input_gd1.5.py
 ```
 
 You can specify the params in this file:
@@ -145,6 +145,7 @@ You can specify the params in this file:
 VIDEO_PATH = "./assets/hippopotamus.mp4"
 TEXT_PROMPT = "hippopotamus."
 OUTPUT_VIDEO_PATH = "./hippopotamus_tracking_demo.mp4"
+API_TOKEN_FOR_GD1_5 = "Your API token" # api token for G-DINO 1.5
 ```
 
 After running our demo code, you can get the tracking results as follows:
