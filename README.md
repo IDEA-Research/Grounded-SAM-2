@@ -19,6 +19,7 @@ Grounded SAM 2 does not introduce significant methodological changes compared to
   - [Grounded-SAM-2 Image Demo (with Grounding DINO 1.5 & 1.6)](#grounded-sam-2-image-demo-with-grounding-dino-15--16)
   - [Grounded-SAM-2 Video Object Tracking Demo](#grounded-sam-2-video-object-tracking-demo)
   - [Grounded-SAM-2 Video Object Tracking Demo (with Grounding DINO 1.5 & 1.6)](#grounded-sam-2-video-object-tracking-demo-with-grounding-dino-15--16)
+  - [Grounded-SAM-2 Video Object Tracking with Custom Video Input (using Grounding DINO)](#grounded-sam-2-video-object-tracking-demo-with-custom-video-input-with-grounding-dino)
   - [Grounded-SAM-2 Video Object Tracking with Custom Video Input (using Grounding DINO 1.5 & 1.6)](#grounded-sam-2-video-object-tracking-demo-with-custom-video-input-with-grounding-dino-15--16)
 - [Citation](#citation)
 
@@ -131,9 +132,17 @@ We've also support video object tracking demo based on our stronger `Grounding D
 python grounded_sam2_tracking_demo_with_gd1.5.py
 ```
 
+### Grounded-SAM-2 Video Object Tracking Demo with Custom Video Input (with Grounding DINO)
+
+Users can upload their own video file (e.g. `assets/hippopotamus.mp4`) and specify their custom text prompts for grounding and tracking with Grounding DINO and SAM 2 by using the following scripts:
+
+```bash
+python grounded_sam2_tracking_demo_custom_video_input_gd1.0_hf_model.py
+```
+
 ### Grounded-SAM-2 Video Object Tracking Demo with Custom Video Input (with Grounding DINO 1.5 & 1.6)
 
-Users can upload their own video file (e.g. `assets/hippopotamus.mp4`) and specify their custom text prompts for grounding and tracking with the following scripts:
+Users can upload their own video file (e.g. `assets/hippopotamus.mp4`) and specify their custom text prompts for grounding and tracking with Grounding DINO 1.5 and SAM 2 by using the following scripts:
 
 ```bash
 python grounded_sam2_tracking_demo_custom_video_input_gd1.5.py
