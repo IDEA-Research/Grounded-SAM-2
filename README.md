@@ -118,7 +118,7 @@ We have observed that the video predictor in SAM 2 currently **did not support b
 
 A simple pipeline visualization is as follows:
 
-![Grounded SAM 2 Tracking Pipeline](./assets/grounded_sam2_tracking_pipeline_vis.png)
+![Grounded SAM 2 Tracking Pipeline](./assets/g_sam2_video_pipeline_v2.png)
 
 > [!NOTE]
 > We've also supported using mask prediction results as prompt for SAM 2 video predictor, which returns a more stable tracking results.
