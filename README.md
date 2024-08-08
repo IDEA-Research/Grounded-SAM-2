@@ -14,7 +14,7 @@ Grounded SAM 2 does not introduce significant methodological changes compared to
 
 ## Contents
 - [Installation](#installation)
-- [Grounded SAM 2 Demo](#grounded-sam-2-demo)
+- [Grounded SAM 2 Demo](#grounded-sam-2-demos)
   - [Grounded SAM 2 Image Demo](#grounded-sam-2-image-demo-with-grounding-dino)
   - [Grounded SAM 2 Image Demo (with Grounding DINO 1.5 & 1.6)](#grounded-sam-2-image-demo-with-grounding-dino-15--16)
   - [Grounded SAM 2 Video Object Tracking Demo](#grounded-sam-2-video-object-tracking-demo)
@@ -65,7 +65,7 @@ wget https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alp
 wget https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha2/groundingdino_swinb_cogcoor.pth
 ```
 
-## Grounded SAM 2 Demo
+## Grounded SAM 2 Demos
 ### Grounded SAM 2 Image Demo (with Grounding DINO)
 Note that `Grounding DINO` has already been supported in [Huggingface](https://huggingface.co/IDEA-Research/grounding-dino-tiny), so we provide two choices for running `Grounded SAM 2` model:
 - Use huggingface API to inference Grounding DINO (which is simple and clear)
