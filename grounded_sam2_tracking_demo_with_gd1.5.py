@@ -129,9 +129,9 @@ elif masks.ndim == 4:
 Step 3: Register each object's positive points to video predictor with seperate add_new_points call
 """
 
-PROMPT_TYPE_FOR_VIDEO = "mask" # or "point"
+PROMPT_TYPE_FOR_VIDEO = "box" # or "point"
 
-assert PROMPT_TYPE_FOR_VIDEO in ["point", "mask"]
+assert PROMPT_TYPE_FOR_VIDEO in ["point", "box", "mask"], "SAM 2 video predictor only support point/box/mask prompt"
 
 # If you are using point prompts, we uniformly sample positive points based on the mask
 if PROMPT_TYPE_FOR_VIDEO == "point":
@@ -140,12 +140,21 @@ if PROMPT_TYPE_FOR_VIDEO == "point":
 
     for object_id, (label, points) in enumerate(zip(OBJECTS, all_sample_points), start=1):
         labels = np.ones((points.shape[0]), dtype=np.int32)
-        _, out_obj_ids, out_mask_logits = video_predictor.add_new_points(
+        _, out_obj_ids, out_mask_logits = video_predictor.add_new_points_or_box(
             inference_state=inference_state,
             frame_idx=ann_frame_idx,
             obj_id=object_id,
             points=points,
             labels=labels,
+        )
+# Using box prompt
+elif PROMPT_TYPE_FOR_VIDEO == "box":
+    for object_id, (label, box) in enumerate(zip(OBJECTS, input_boxes), start=1):
+        _, out_obj_ids, out_mask_logits = video_predictor.add_new_points_or_box(
+            inference_state=inference_state,
+            frame_idx=ann_frame_idx,
+            obj_id=object_id,
+            box=box,
         )
 # Using mask prompt is a more straightforward way
 elif PROMPT_TYPE_FOR_VIDEO == "mask":
@@ -157,6 +166,9 @@ elif PROMPT_TYPE_FOR_VIDEO == "mask":
             obj_id=object_id,
             mask=mask
         )
+else:
+    raise NotImplementedError("SAM 2 video predictor only support point/box/mask prompts")
+
 
 
 """
