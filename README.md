@@ -1,5 +1,5 @@
 # Grounded SAM 2
-Grounded SAM 2: Ground and Track Anything with [Grounding DINO](https://arxiv.org/abs/2303.05499), [Grounding DINO 1.5](https://arxiv.org/abs/2405.10300) and [SAM 2](https://arxiv.org/abs/2408.00714).
+Grounded SAM 2: Ground and Track Anything in Videos with [Grounding DINO](https://arxiv.org/abs/2303.05499), [Grounding DINO 1.5](https://arxiv.org/abs/2405.10300) and [SAM 2](https://arxiv.org/abs/2408.00714).
 
 **🔥 Project Highlight**
 
