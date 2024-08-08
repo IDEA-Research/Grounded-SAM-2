@@ -113,16 +113,16 @@ python grounded_sam2_tracking_demo.py
 - You can refine this file with different text prompt and video clips yourself to get more tracking results.
 - We only prompt the first video frame with Grounding DINO here for simple usage.
 
-#### Uniform Point Sampling for Stable Segmentation Results in Video Demos based on SAM 2 Image Predictor
+#### Support Various Prompt Type for Tracking
 
-We have observed that the video predictor in SAM 2 currently **did not support box prompts** (please feel free to point out any updates or functionalities we may have overlooked during development). However, Grounding DINO provides box prompts, which need to be converted into point prompts for use in video tracking. A straightforward approach is to directly sample the center point of the box as a point prompt. Nevertheless, this method may encounter certain issues in practical testing scenarios. To **get a more stable segmentation results**, we reuse the SAM 2 image predictor to get the prediction mask for each object first, then we **uniformly sample points from the prediction mask** to prompt SAM 2 video predictor.
+We've supported different types of prompt for Grounded SAM 2 tracking demo:
 
-A simple pipeline visualization is as follows:
+- **Point Prompt**: In order to **get a stable segmentation results**, we re-use the SAM 2 image predictor to get the prediction mask from each object based on Grounding DINO box outputs, then we **uniformly sample points from the prediction mask** as point prompts for SAM 2 video predictor
+- **Box Prompt**: We directly use the box outputs from Grounding DINO as box prompts for SAM 2 video predictor
+- **Mask Prompt**: We use the SAM 2 mask prediction results based on Grounding DINO box outputs as mask prompt for SAM 2 video predictor.
 
-![Grounded SAM 2 Tracking Pipeline](./assets/g_sam2_video_pipeline_v2.png)
+![Grounded SAM 2 Tracking Pipeline](./assets/g_sam2_tracking_pipeline_vis.png)
 
-> [!NOTE]
-> We've also supported using mask prediction results as prompt for SAM 2 video predictor, which returns a more stable tracking results.
 
 ### Grounded-SAM-2 Video Object Tracking Demo (with Grounding DINO 1.5 & 1.6)
 
