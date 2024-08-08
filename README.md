@@ -165,7 +165,7 @@ After running our demo code, you can get the tracking results as follows:
 And we will automatically save the tracking visualization results in `OUTPUT_VIDEO_PATH`.
 
 > [!WARNING]
-> We initilize the box prompts on the first frame of the input video. If you want to start from different frame, you can refine `ann_frame_idx` by yourself in our code.
+> We initialize the box prompts on the first frame of the input video. If you want to start from different frame, you can refine `ann_frame_idx` by yourself in our code.
 
 ### Citation
 
