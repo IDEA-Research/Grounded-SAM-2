@@ -167,6 +167,33 @@ And we will automatically save the tracking visualization results in `OUTPUT_VID
 > [!WARNING]
 > We initialize the box prompts on the first frame of the input video. If you want to start from different frame, you can refine `ann_frame_idx` by yourself in our code.
 
+### Grounded-SAM-2  Video Object Tracking with Continuous ID (with Grounding DINO)
+Users can upload their own video files and specify custom text prompts for grounding and tracking using the Grounding DINO and SAM 2 frameworks. To do this, execute the script:
+
+
+```python 
+grounded_sam2_tracking_demo_with_continuous_id.py
+```
+
+You can customize various parameters including:
+
+- `text`: The grounding text prompt.
+- `video_dir`: Directory containing the video files.
+- `output_dir`: Directory to save the processed output.
+- `output_video_path`: Path for the output video.
+- `step`: Frame stepping for processing.
+- `box_threshold`: box threshold for groundingdino model
+- `text_threshold`: text threshold for groundingdino model
+Note: This method supports only the mask type of text prompt.
+
+The demo video is:
+[![car tracking demo data](./assets/tracking_car_1.jpg)](./assets/tracking_car.mp4)
+
+
+After running our demo code, you can get the tracking results as follows:
+[![car tracking result data](./assets/tracking_car_mask_1.jpg)](./assets/tracking_car_output.mp4)
+
+
 ### Citation
 
 If you find this project helpful for your research, please consider citing the following BibTeX entry.
