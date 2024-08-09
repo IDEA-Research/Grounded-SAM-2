@@ -12,6 +12,11 @@ Grounded SAM 2 does not introduce significant methodological changes compared to
 
 [![Video Name](./assets/grounded_sam_2_intro.jpg)](https://github.com/user-attachments/assets/f0fb0022-779a-49fb-8f46-3a18a8b4e893)
 
+## News
+
+- `2024/08/09`: Support **Ground and Track New Object** throughout the whole videos. This feature is still under development now. Credits to [Shuo Shen](https://github.com/ShuoShenDe).
+- `2024/08/07`: Support custom video inputs, users need only submit their video file (e.g. mp4 file) with specific text prompts to get an impressive demo videos.
+
 ## Contents
 - [Installation](#installation)
 - [Grounded SAM 2 Demo](#grounded-sam-2-demos)
@@ -21,6 +26,7 @@ Grounded SAM 2 does not introduce significant methodological changes compared to
   - [Grounded SAM 2 Video Object Tracking Demo (with Grounding DINO 1.5 & 1.6)](#grounded-sam-2-video-object-tracking-demo-with-grounding-dino-15--16)
   - [Grounded SAM 2 Video Object Tracking with Custom Video Input (using Grounding DINO)](#grounded-sam-2-video-object-tracking-demo-with-custom-video-input-with-grounding-dino)
   - [Grounded SAM 2 Video Object Tracking with Custom Video Input (using Grounding DINO 1.5 & 1.6)](#grounded-sam-2-video-object-tracking-demo-with-custom-video-input-with-grounding-dino-15--16)
+  - [Grounded SAM 2 Video Object Tracking with Continues ID (using Grounding DINO)](#grounded-sam-2-video-object-tracking-with-continuous-id-with-grounding-dino)
 - [Citation](#citation)
 
 
@@ -167,12 +173,15 @@ And we will automatically save the tracking visualization results in `OUTPUT_VID
 > [!WARNING]
 > We initialize the box prompts on the first frame of the input video. If you want to start from different frame, you can refine `ann_frame_idx` by yourself in our code.
 
-### Grounded-SAM-2  Video Object Tracking with Continuous ID (with Grounding DINO)
+### Grounded-SAM-2 Video Object Tracking with Continuous ID (with Grounding DINO)
+
+In above demos, we only prompt Grounded SAM 2 in specific frame, which may not be friendly to find new object during the whole video. In this demo, we try to **find new objects** and assign them with new ID across the whole video, this function is **still under develop**. it's not that stable now.
+
 Users can upload their own video files and specify custom text prompts for grounding and tracking using the Grounding DINO and SAM 2 frameworks. To do this, execute the script:
 
 
-```python 
-grounded_sam2_tracking_demo_with_continuous_id.py
+```bash 
+python grounded_sam2_tracking_demo_with_continuous_id.py
 ```
 
 You can customize various parameters including:
@@ -186,13 +195,15 @@ You can customize various parameters including:
 - `text_threshold`: text threshold for groundingdino model
 Note: This method supports only the mask type of text prompt.
 
-The demo video is:
-[![car tracking demo data](./assets/tracking_car_1.jpg)](./assets/tracking_car.mp4)
-
-
 After running our demo code, you can get the tracking results as follows:
-[![car tracking result data](./assets/tracking_car_mask_1.jpg)](./assets/tracking_car_output.mp4)
 
+[![Video Name](./assets/tracking_car_mask_1.jpg)](https://github.com/user-attachments/assets/d3f91ad0-3d32-43c4-a0dc-0bed661415f4)
+
+If you want to try `Grounding DINO 1.5` model, you can run the following scripts after setting your API token:
+
+```bash
+python grounded_sam2_tracking_demo_with_continuous_id_gd1.5.py
+```
 
 ### Citation
 
@@ -214,6 +225,15 @@ If you find this project helpful for your research, please consider citing the f
   author={Liu, Shilong and Zeng, Zhaoyang and Ren, Tianhe and Li, Feng and Zhang, Hao and Yang, Jie and Li, Chunyuan and Yang, Jianwei and Su, Hang and Zhu, Jun and others},
   journal={arXiv preprint arXiv:2303.05499},
   year={2023}
+}
+
+@misc{ren2024grounding,
+      title={Grounding DINO 1.5: Advance the "Edge" of Open-Set Object Detection}, 
+      author={Tianhe Ren and Qing Jiang and Shilong Liu and Zhaoyang Zeng and Wenlong Liu and Han Gao and Hongjie Huang and Zhengyu Ma and Xiaoke Jiang and Yihao Chen and Yuda Xiong and Hao Zhang and Feng Li and Peijun Tang and Kent Yu and Lei Zhang},
+      year={2024},
+      eprint={2405.10300},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
 }
 
 @misc{ren2024grounded,
