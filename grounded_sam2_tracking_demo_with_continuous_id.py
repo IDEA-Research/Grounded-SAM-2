@@ -68,7 +68,7 @@ frame_names.sort(key=lambda p: int(os.path.splitext(p)[0]))
 
 # init video predictor state
 inference_state = video_predictor.init_state(video_path=video_dir)
-step = 10 # the step to sample frames for groundedDino predictor
+step = 25 # the step to sample frames for Grounding DINO predictor
 
 sam2_masks = MaskDictionatyModel()
 PROMPT_TYPE_FOR_VIDEO = "mask" # box, mask or point
@@ -195,4 +195,4 @@ Step 6: Draw the results and save the video
 """
 CommonUtils.draw_masks_and_box(video_dir, mask_data_dir, json_data_dir, result_dir)
 
-create_video_from_images(result_dir, output_video_path, frame_rate=15)
+create_video_from_images(result_dir, output_video_path, frame_rate=30)
