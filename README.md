@@ -197,7 +197,7 @@ Note: This method supports only the mask type of text prompt.
 
 After running our demo code, you can get the tracking results as follows:
 
-[![Video Name](./assets/tracking_car_mask_1.jpg)](https://github.com/user-attachments/assets/d4b80e9b-bab3-4562-8b1a-9bf41e454b68)
+[![Video Name](./assets/tracking_car_mask_1.jpg)](https://github.com/user-attachments/assets/d3f91ad0-3d32-43c4-a0dc-0bed661415f4)
 
 ### Citation
 

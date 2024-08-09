@@ -68,7 +68,7 @@ frame_names.sort(key=lambda p: int(os.path.splitext(p)[0]))
 
 # init video predictor state
 inference_state = video_predictor.init_state(video_path=video_dir)
-step = 25 # the step to sample frames for Grounding DINO predictor
+step = 10 # the step to sample frames for Grounding DINO predictor
 
 sam2_masks = MaskDictionatyModel()
 PROMPT_TYPE_FOR_VIDEO = "mask" # box, mask or point
