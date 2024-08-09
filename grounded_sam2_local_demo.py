@@ -68,11 +68,7 @@ masks, scores, logits = sam2_predictor.predict(
 Post-process the output of the model to get the masks, scores, and logits for visualization
 """
 # convert the shape to (n, H, W)
-if masks.ndim == 3:
-    masks = masks[None]
-    scores = scores[None]
-    logits = logits[None]
-elif masks.ndim == 4:
+if masks.ndim == 4:
     masks = masks.squeeze(1)
 
 

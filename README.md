@@ -1,5 +1,5 @@
-# Grounded-SAM-2
-Grounded SAM 2: Ground and Track Anything with [Grounding DINO](https://arxiv.org/abs/2303.05499), [Grounding DINO 1.5](https://arxiv.org/abs/2405.10300) and [SAM 2](https://arxiv.org/abs/2408.00714).
+# Grounded SAM 2
+Grounded SAM 2: Ground and Track Anything in Videos with [Grounding DINO](https://arxiv.org/abs/2303.05499), [Grounding DINO 1.5](https://arxiv.org/abs/2405.10300) and [SAM 2](https://arxiv.org/abs/2408.00714).
 
 **🔥 Project Highlight**
 
@@ -14,13 +14,13 @@ Grounded SAM 2 does not introduce significant methodological changes compared to
 
 ## Contents
 - [Installation](#installation)
-- [Grounded-SAM-2 Demo](#grounded-sam-2-demo)
-  - [Grounded-SAM-2 Image Demo](#grounded-sam-2-image-demo-with-grounding-dino)
-  - [Grounded-SAM-2 Image Demo (with Grounding DINO 1.5 & 1.6)](#grounded-sam-2-image-demo-with-grounding-dino-15--16)
-  - [Grounded-SAM-2 Video Object Tracking Demo](#grounded-sam-2-video-object-tracking-demo)
-  - [Grounded-SAM-2 Video Object Tracking Demo (with Grounding DINO 1.5 & 1.6)](#grounded-sam-2-video-object-tracking-demo-with-grounding-dino-15--16)
-  - [Grounded-SAM-2 Video Object Tracking with Custom Video Input (using Grounding DINO)](#grounded-sam-2-video-object-tracking-demo-with-custom-video-input-with-grounding-dino)
-  - [Grounded-SAM-2 Video Object Tracking with Custom Video Input (using Grounding DINO 1.5 & 1.6)](#grounded-sam-2-video-object-tracking-demo-with-custom-video-input-with-grounding-dino-15--16)
+- [Grounded SAM 2 Demo](#grounded-sam-2-demos)
+  - [Grounded SAM 2 Image Demo](#grounded-sam-2-image-demo-with-grounding-dino)
+  - [Grounded SAM 2 Image Demo (with Grounding DINO 1.5 & 1.6)](#grounded-sam-2-image-demo-with-grounding-dino-15--16)
+  - [Grounded SAM 2 Video Object Tracking Demo](#grounded-sam-2-video-object-tracking-demo)
+  - [Grounded SAM 2 Video Object Tracking Demo (with Grounding DINO 1.5 & 1.6)](#grounded-sam-2-video-object-tracking-demo-with-grounding-dino-15--16)
+  - [Grounded SAM 2 Video Object Tracking with Custom Video Input (using Grounding DINO)](#grounded-sam-2-video-object-tracking-demo-with-custom-video-input-with-grounding-dino)
+  - [Grounded SAM 2 Video Object Tracking with Custom Video Input (using Grounding DINO 1.5 & 1.6)](#grounded-sam-2-video-object-tracking-demo-with-custom-video-input-with-grounding-dino-15--16)
 - [Citation](#citation)
 
 
@@ -65,9 +65,9 @@ wget https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alp
 wget https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha2/groundingdino_swinb_cogcoor.pth
 ```
 
-## Grounded-SAM-2 Demo
-### Grounded-SAM-2 Image Demo (with Grounding DINO)
-Note that `Grounding DINO` has already been supported in [Huggingface](https://huggingface.co/IDEA-Research/grounding-dino-tiny), so we provide two choices for running `Grounded-SAM-2` model:
+## Grounded SAM 2 Demos
+### Grounded SAM 2 Image Demo (with Grounding DINO)
+Note that `Grounding DINO` has already been supported in [Huggingface](https://huggingface.co/IDEA-Research/grounding-dino-tiny), so we provide two choices for running `Grounded SAM 2` model:
 - Use huggingface API to inference Grounding DINO (which is simple and clear)
 
 ```bash
@@ -84,9 +84,9 @@ python grounded_sam2_local_demo.py
 ```
 
 
-### Grounded-SAM-2 Image Demo (with Grounding DINO 1.5 & 1.6)
+### Grounded SAM 2 Image Demo (with Grounding DINO 1.5 & 1.6)
 
-We've already released our most capable open-set detection model [Grounding DINO 1.5 & 1.6](https://github.com/IDEA-Research/Grounding-DINO-1.5-API), which can be combined with SAM 2 for stronger open-set detection and segmentation capability. You can apply the API token first and run Grounded-SAM-2 with Grounding DINO 1.5 as follows:
+We've already released our most capable open-set detection model [Grounding DINO 1.5 & 1.6](https://github.com/IDEA-Research/Grounding-DINO-1.5-API), which can be combined with SAM 2 for stronger open-set detection and segmentation capability. You can apply the API token first and run Grounded SAM 2 with Grounding DINO 1.5 as follows:
 
 Install the latest DDS cloudapi:
 
@@ -100,9 +100,9 @@ Apply your API token from our official website here: [request API token](https:/
 python grounded_sam2_gd1.5_demo.py
 ```
 
-### Grounded-SAM-2 Video Object Tracking Demo
+### Grounded SAM 2 Video Object Tracking Demo
 
-Based on the strong tracking capability of SAM 2, we can combined it with Grounding DINO for open-set object segmentation and tracking. You can run the following scripts to get the tracking results with Grounded-SAM-2:
+Based on the strong tracking capability of SAM 2, we can combined it with Grounding DINO for open-set object segmentation and tracking. You can run the following scripts to get the tracking results with Grounded SAM 2:
 
 ```bash
 python grounded_sam2_tracking_demo.py
@@ -124,7 +124,7 @@ We've supported different types of prompt for Grounded SAM 2 tracking demo:
 ![Grounded SAM 2 Tracking Pipeline](./assets/g_sam2_tracking_pipeline_vis.png)
 
 
-### Grounded-SAM-2 Video Object Tracking Demo (with Grounding DINO 1.5 & 1.6)
+### Grounded SAM 2 Video Object Tracking Demo (with Grounding DINO 1.5 & 1.6)
 
 We've also support video object tracking demo based on our stronger `Grounding DINO 1.5` model and `SAM 2`, you can try the following demo after applying the API keys for running `Grounding DINO 1.5`:
 
@@ -132,7 +132,7 @@ We've also support video object tracking demo based on our stronger `Grounding D
 python grounded_sam2_tracking_demo_with_gd1.5.py
 ```
 
-### Grounded-SAM-2 Video Object Tracking Demo with Custom Video Input (with Grounding DINO)
+### Grounded SAM 2 Video Object Tracking Demo with Custom Video Input (with Grounding DINO)
 
 Users can upload their own video file (e.g. `assets/hippopotamus.mp4`) and specify their custom text prompts for grounding and tracking with Grounding DINO and SAM 2 by using the following scripts:
 
@@ -140,7 +140,7 @@ Users can upload their own video file (e.g. `assets/hippopotamus.mp4`) and speci
 python grounded_sam2_tracking_demo_custom_video_input_gd1.0_hf_model.py
 ```
 
-### Grounded-SAM-2 Video Object Tracking Demo with Custom Video Input (with Grounding DINO 1.5 & 1.6)
+### Grounded SAM 2 Video Object Tracking Demo with Custom Video Input (with Grounding DINO 1.5 & 1.6)
 
 Users can upload their own video file (e.g. `assets/hippopotamus.mp4`) and specify their custom text prompts for grounding and tracking with Grounding DINO 1.5 and SAM 2 by using the following scripts:
 
@@ -209,13 +209,6 @@ If you find this project helpful for your research, please consider citing the f
       url={https://arxiv.org/abs/2408.00714}, 
 }
 
-@article{kirillov2023segany,
-  title={Segment Anything}, 
-  author={Kirillov, Alexander and Mintun, Eric and Ravi, Nikhila and Mao, Hanzi and Rolland, Chloe and Gustafson, Laura and Xiao, Tete and Whitehead, Spencer and Berg, Alexander C. and Lo, Wan-Yen and Doll{\'a}r, Piotr and Girshick, Ross},
-  journal={arXiv:2304.02643},
-  year={2023}
-}
-
 @article{liu2023grounding,
   title={Grounding dino: Marrying dino with grounded pre-training for open-set object detection},
   author={Liu, Shilong and Zeng, Zhaoyang and Ren, Tianhe and Li, Feng and Zhang, Hao and Yang, Jie and Li, Chunyuan and Yang, Jianwei and Su, Hang and Zhu, Jun and others},
@@ -230,6 +223,13 @@ If you find this project helpful for your research, please consider citing the f
       eprint={2401.14159},
       archivePrefix={arXiv},
       primaryClass={cs.CV}
+}
+
+@article{kirillov2023segany,
+  title={Segment Anything}, 
+  author={Kirillov, Alexander and Mintun, Eric and Ravi, Nikhila and Mao, Hanzi and Rolland, Chloe and Gustafson, Laura and Xiao, Tete and Whitehead, Spencer and Berg, Alexander C. and Lo, Wan-Yen and Doll{\'a}r, Piotr and Girshick, Ross},
+  journal={arXiv:2304.02643},
+  year={2023}
 }
 
 @misc{jiang2024trex2,
