@@ -9,7 +9,7 @@ build/*
 _C.*
 outputs/*
 checkpoints/*.pt
-
+*test*
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

@@ -7,8 +7,8 @@ from PIL import Image
 from sam2.build_sam import build_sam2_video_predictor, build_sam2
 from sam2.sam2_image_predictor import SAM2ImagePredictor
 from transformers import AutoProcessor, AutoModelForZeroShotObjectDetection 
-from track_utils import sample_points_from_masks
-from video_utils import create_video_from_images
+from utils.track_utils import sample_points_from_masks
+from utils.video_utils import create_video_from_images
 
 
 """
@@ -40,10 +40,11 @@ grounding_model = AutoModelForZeroShotObjectDetection.from_pretrained(model_id).
 
 # setup the input image and text prompt for SAM 2 and Grounding DINO
 # VERY important: text queries need to be lowercased + end with a dot
-text = "children."
+text = "car."
 
-# `video_dir` a directory of JPEG frames with filenames like `<frame_index>.jpg`
-video_dir = "notebooks/videos/bedroom"
+# `video_dir` a directory of JPEG frames with filenames like `<frame_index>.jpg`  
+
+video_dir = "notebooks/videos/car"
 
 # scan all the JPEG frame names in this directory
 frame_names = [

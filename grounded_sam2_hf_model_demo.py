@@ -3,7 +3,7 @@ import torch
 import numpy as np
 import supervision as sv
 from supervision.draw.color import ColorPalette
-from supervision_utils import CUSTOM_COLOR_MAP
+from utils.supervision_utils import CUSTOM_COLOR_MAP
 from PIL import Image
 from sam2.build_sam import build_sam2
 from sam2.sam2_image_predictor import SAM2ImagePredictor
