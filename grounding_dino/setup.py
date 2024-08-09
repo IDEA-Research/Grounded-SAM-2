@@ -92,6 +92,10 @@ def get_extensions():
             "-D__CUDA_NO_HALF_OPERATORS__",
             "-D__CUDA_NO_HALF_CONVERSIONS__",
             "-D__CUDA_NO_HALF2_OPERATORS__",
+            "-gencode=arch=compute_70,code=sm_70",
+            "-gencode=arch=compute_75,code=sm_75",
+            "-gencode=arch=compute_80,code=sm_80",
+            "-gencode=arch=compute_86,code=sm_86",
         ]
     else:
         print("Compiling without CUDA")
@@ -208,7 +212,7 @@ if __name__ == "__main__":
         url="https://github.com/IDEA-Research/GroundingDINO",
         description="open-set object detector",
         license=license,
-        install_requires=parse_requirements("requirements.txt"),
+        # install_requires=parse_requirements("requirements.txt"),
         packages=find_packages(
             exclude=(
                 "configs",
