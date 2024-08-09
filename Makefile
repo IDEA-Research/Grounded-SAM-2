@@ -23,16 +23,6 @@ else
 endif
 
 
-prepare-checkpoints:
-	@echo "Preparing checkpoints..."
-	cd checkpoints && \
-	bash download_ckpts.sh && \
-	mkdir -p gdino_checkpoints && \
-	cd gdino_checkpoints && \
-	wget https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha/groundingdino_swint_ogc.pth && \
-	wget https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha2/groundingdino_swinb_cogcoor.pth
-
-
 build-image:
 	@echo $(BUILD_MESSAGE)
 	docker build --build-arg USE_CUDA=$(USE_CUDA) \

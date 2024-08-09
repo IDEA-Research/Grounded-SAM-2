@@ -32,6 +32,22 @@ Grounded SAM 2 does not introduce significant methodological changes compared to
 
 ## Installation
 
+Download the pretrained `SAM 2` checkpoints:
+
+```bash
+cd checkpoints
+bash download_ckpts.sh
+```
+
+Download the pretrained `Grounding DINO` checkpoints:
+
+```bash
+cd gdino_checkpoints
+bash download_ckpts.sh
+```
+
+### Installation without docker
+
 Install PyTorch environment first. We use `python=3.10`, as well as `torch >= 2.3.1`, `torchvision>=0.18.1` and `cuda-12.1` in our environment to run this demo. Please follow the instructions [here](https://pytorch.org/get-started/locally/) to install both PyTorch and TorchVision dependencies. Installing both PyTorch and TorchVision with CUDA support is strongly recommended. You can easily install the latest version of PyTorch as follows:
 
 ```bash
@@ -56,19 +72,19 @@ Install `Grounding DINO`:
 pip install --no-build-isolation -e grounding_dino
 ```
 
-Download the pretrained `SAM 2` checkpoints:
+### Installation with docker
+Build the Docker image and Run the Docker container:
 
-```bash
-cd checkpoints
-bash download_ckpts.sh
 ```
+cd Grounded-SAM-2
+make build-image
+make run
+```
+After executing these commands, you will be inside the Docker environment. The working directory within the container is set to: `/home/appuser/Grounded-SAM-2`
 
-Download the pretrained `Grounding DINO` checkpoints:
-
-```bash
-cd gdino_checkpoints
-wget https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha/groundingdino_swint_ogc.pth
-wget https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha2/groundingdino_swinb_cogcoor.pth
+Once inside the Docker environment, you can start the demo by running:
+```
+python grounded_sam2_tracking_demo.py
 ```
 
 ## Grounded SAM 2 Demos
