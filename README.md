@@ -199,6 +199,12 @@ After running our demo code, you can get the tracking results as follows:
 
 [![Video Name](./assets/tracking_car_mask_1.jpg)](https://github.com/user-attachments/assets/d3f91ad0-3d32-43c4-a0dc-0bed661415f4)
 
+If you want to try `Grounding DINO 1.5` model, you can run the following scripts after setting your API token:
+
+```bash
+python grounded_sam2_tracking_demo_with_continuous_id_gd1.5.py
+```
+
 ### Citation
 
 If you find this project helpful for your research, please consider citing the following BibTeX entry.
