@@ -221,6 +221,15 @@ If you find this project helpful for your research, please consider citing the f
   year={2023}
 }
 
+@misc{ren2024grounding,
+      title={Grounding DINO 1.5: Advance the "Edge" of Open-Set Object Detection}, 
+      author={Tianhe Ren and Qing Jiang and Shilong Liu and Zhaoyang Zeng and Wenlong Liu and Han Gao and Hongjie Huang and Zhengyu Ma and Xiaoke Jiang and Yihao Chen and Yuda Xiong and Hao Zhang and Feng Li and Peijun Tang and Kent Yu and Lei Zhang},
+      year={2024},
+      eprint={2405.10300},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+
 @misc{ren2024grounded,
       title={Grounded SAM: Assembling Open-World Models for Diverse Visual Tasks}, 
       author={Tianhe Ren and Shilong Liu and Ailing Zeng and Jing Lin and Kunchang Li and He Cao and Jiayu Chen and Xinyu Huang and Yukang Chen and Feng Yan and Zhaoyang Zeng and Hao Zhang and Feng Li and Jie Yang and Hongyang Li and Qing Jiang and Lei Zhang},
