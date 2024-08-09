@@ -68,9 +68,6 @@ frame_names.sort(key=lambda p: int(os.path.splitext(p)[0]))
 
 # init video predictor state
 inference_state = video_predictor.init_state(video_path=video_dir)
-
-ann_frame_idx = 0  # the frame index we interact with
-ann_obj_id = 1  # give a unique id to each object we interact with (it can be any integers)
 step = 10 # the step to sample frames for groundedDino predictor
 
 sam2_masks = MaskDictionatyModel()

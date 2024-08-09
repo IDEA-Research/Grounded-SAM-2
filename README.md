@@ -186,6 +186,10 @@ You can customize various parameters including:
 - `text_threshold`: text threshold for groundingdino model
 Note: This method supports only the mask type of text prompt.
 
+After running our demo code, you can get the tracking results as follows:
+[![car tracking demo data](./assets/tracking_video_1.jpg)](./assets/tracking_video.mp4)
+[![car tracking result data](./assets/tracking_car_mask_1.jpg)](./assets/tracking_car_output.mp4)
+
 
 ### Citation
 
