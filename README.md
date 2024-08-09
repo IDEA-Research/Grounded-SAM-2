@@ -180,8 +180,8 @@ In above demos, we only prompt Grounded SAM 2 in specific frame, which may not b
 Users can upload their own video files and specify custom text prompts for grounding and tracking using the Grounding DINO and SAM 2 frameworks. To do this, execute the script:
 
 
-```python 
-grounded_sam2_tracking_demo_with_continuous_id.py
+```bash 
+python grounded_sam2_tracking_demo_with_continuous_id.py
 ```
 
 You can customize various parameters including:
