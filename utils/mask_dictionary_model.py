@@ -7,7 +7,7 @@ import cv2
 from dataclasses import dataclass, field
 
 @dataclass
-class MaskDictionatyModel:
+class MaskDictionaryModel:
     mask_name:str = ""
     mask_height: int = 1080
     mask_width:int = 1920

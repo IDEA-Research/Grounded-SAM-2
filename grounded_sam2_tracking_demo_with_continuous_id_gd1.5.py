@@ -16,7 +16,7 @@ from sam2.sam2_image_predictor import SAM2ImagePredictor
 from transformers import AutoProcessor, AutoModelForZeroShotObjectDetection 
 from utils.video_utils import create_video_from_images
 from utils.common_utils import CommonUtils
-from utils.mask_dictionary_model import MaskDictionatyModel, ObjectInfo
+from utils.mask_dictionary_model import MaskDictionaryModel, ObjectInfo
 import json
 import copy
 
@@ -76,7 +76,7 @@ frame_names.sort(key=lambda p: int(os.path.splitext(p)[0]))
 inference_state = video_predictor.init_state(video_path=video_dir)
 step = 10 # the step to sample frames for Grounding DINO predictor
 
-sam2_masks = MaskDictionatyModel()
+sam2_masks = MaskDictionaryModel()
 PROMPT_TYPE_FOR_VIDEO = "mask" # box, mask or point
 objects_count = 0
 
@@ -91,7 +91,7 @@ for start_frame_idx in range(0, len(frame_names), step):
     img_path = os.path.join(video_dir, frame_names[start_frame_idx])
     image = Image.open(img_path)
     image_base_name = frame_names[start_frame_idx].split(".")[0]
-    mask_dict = MaskDictionatyModel(promote_type = PROMPT_TYPE_FOR_VIDEO, mask_name = f"mask_{image_base_name}.npy")
+    mask_dict = MaskDictionaryModel(promote_type = PROMPT_TYPE_FOR_VIDEO, mask_name = f"mask_{image_base_name}.npy")
 
     # run Grounding DINO 1.5 on the image
 
@@ -174,7 +174,7 @@ for start_frame_idx in range(0, len(frame_names), step):
     
     video_segments = {}  # output the following {step} frames tracking masks
     for out_frame_idx, out_obj_ids, out_mask_logits in video_predictor.propagate_in_video(inference_state, max_frame_num_to_track=step, start_frame_idx=start_frame_idx):
-        frame_masks = MaskDictionatyModel()
+        frame_masks = MaskDictionaryModel()
         
         for i, out_obj_id in enumerate(out_obj_ids):
             out_mask = (out_mask_logits[i] > 0.0) # .cpu().numpy()
