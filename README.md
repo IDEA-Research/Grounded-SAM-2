@@ -15,7 +15,7 @@ Grounded SAM 2 does not introduce significant methodological changes compared to
 ## News
 
 - `2024/08/09`: Support **Ground and Track New Object** throughout the whole videos. This feature is still under development now. Credits to [Shuo Shen](https://github.com/ShuoShenDe).
-- `2024/08/07`: Support custom video inputs, users need only submit their video file (e.g. mp4 file) with specific text prompts to get an impressive demo videos.
+- `2024/08/07`: Support **Custom Video Inputs**, users need only submit their video file (e.g. mp4 file) with specific text prompts to get an impressive demo videos.
 
 ## Contents
 - [Installation](#installation)
