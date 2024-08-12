@@ -143,7 +143,7 @@ We've supported different types of prompt for Grounded SAM 2 tracking demo:
 - **Box Prompt**: We directly use the box outputs from Grounding DINO as box prompts for SAM 2 video predictor
 - **Mask Prompt**: We use the SAM 2 mask prediction results based on Grounding DINO box outputs as mask prompt for SAM 2 video predictor.
 
-![Grounded SAM 2 Tracking Pipeline](./assets/g_sam2_tracking_pipeline_vis.png)
+![Grounded SAM 2 Tracking Pipeline](./assets/g_sam2_tracking_pipeline_vis_new.png)
 
 
 ### Grounded SAM 2 Video Object Tracking Demo (with Grounding DINO 1.5 & 1.6)
