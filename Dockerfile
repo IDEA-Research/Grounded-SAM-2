@@ -32,3 +32,5 @@ RUN python -m pip install --upgrade pip setuptools wheel numpy
 # Install segment_anything package in editable mode
 RUN python -m pip install -e .
 
+# Install grounding dino 
+RUN python -m pip install --no-build-isolation -e grounding_dino
