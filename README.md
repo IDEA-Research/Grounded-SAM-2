@@ -224,9 +224,42 @@ python grounded_sam2_tracking_demo_with_continuous_id_gd1.5.py
 ```
 
 ## Grounded SAM 2 Florence-2 Demos
-### Grounded SAM 2 Florence-2 Image Demo
+### Grounded SAM 2 Florence-2 Image Demo (Updating)
 
 In this section, we will explore how to integrate the feature-rich and robust open-source models [Florence-2](https://arxiv.org/abs/2311.06242) and SAM 2 to develop practical applications.
+
+[Florence-2](https://arxiv.org/abs/2311.06242) is a powerful vision foundation model by Microsoft which supports a series of vision tasks by prompting with special `task_prompt` includes but not limited to:
+
+| Task | Task Prompt | Text Input | Task Introduction |
+|:---:|:---:|:---:|:---:|
+| Object Detection | `<OD>` | &#10008; | Detect main objects with single category name |
+| Dense Region Caption | `<DENSE_REGION_CAPTION>` | &#10008; | Detect main objects with short description |
+| Region Proposal | `<REGION_PROPOSAL>` | &#10008; | Generate proposals without category name |
+| Phrase Grounding | `<CAPTION_TO_PHRASE_GROUNDING>` | &#10004; | Ground main objects in image mentioned in caption |
+
+
+Integrate `Florence-2` with `SAM-2`, we can build a strong vision pipeline to solve complex vision tasks, you can try the following scripts to run the demo:
+
+**Object Detection and Segmentation**
+```bash
+python grounded_sam2_image_demo_florence2.py --pipeline object_detection_segmentation --image_path ./notebooks/images/cars.jpg
+```
+
+**Dense Region Caption and Segmentation**
+```bash
+python grounded_sam2_image_demo_florence2.py --pipeline dense_region_caption_segmentation --image_path ./notebooks/images/cars.jpg
+```
+
+**Region Proposal and Segmentation**
+```bash
+python grounded_sam2_image_demo_florence2.py --pipeline region_proposal_segmentation --image_path ./notebooks/images/cars.jpg
+```
+
+**Phrase Grounding and Segmentation**
+```bash
+python grounded_sam2_image_demo_florence2.py --pipeline phrase_grounding_and_segmentation --image_path ./notebooks/images/cars.jpg
+```
+
 
 ### Citation
 
