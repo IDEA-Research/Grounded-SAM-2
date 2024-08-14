@@ -173,7 +173,7 @@ def object_detection_and_segmentation(
 
 if __name__ == "__main__":
 
-    image_path = "/comp_robot/rentianhe/code/Grounded-SAM-2/notebooks/images/groceries.jpg"
+    image_path = "./notebooks/images/groceries.jpg"
 
     # pipeline-1: detection + segmentation
     object_detection_and_segmentation(
