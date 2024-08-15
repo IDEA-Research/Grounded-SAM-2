@@ -241,6 +241,9 @@ In this section, we will explore how to integrate the feature-rich and robust op
 
 Integrate `Florence-2` with `SAM-2`, we can build a strong vision pipeline to solve complex vision tasks, you can try the following scripts to run the demo:
 
+> [!NOTE]
+> 🚨 If you encounter network issues while using the `HuggingFace` model, you can resolve them by setting the appropriate mirror source as `export HF_ENDPOINT=https://hf-mirror.com`
+
 **Object Detection and Segmentation**
 ```bash
 python grounded_sam2_image_demo_florence2.py \
