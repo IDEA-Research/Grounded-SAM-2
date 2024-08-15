@@ -28,7 +28,7 @@ Grounded SAM 2 does not introduce significant methodological changes compared to
   - [Grounded SAM 2 Video Object Tracking with Custom Video Input (using Grounding DINO 1.5 & 1.6)](#grounded-sam-2-video-object-tracking-demo-with-custom-video-input-with-grounding-dino-15--16)
   - [Grounded SAM 2 Video Object Tracking with Continues ID (using Grounding DINO)](#grounded-sam-2-video-object-tracking-with-continuous-id-with-grounding-dino)
 - [Grounded SAM 2 Florence-2 Demos](#grounded-sam-2-florence-2-demos)
-  - [Grounded SAM 2 Florence-2 Image Demo](#grounded-sam-2-florence-2-image-demo)
+  - [Grounded SAM 2 Florence-2 Image Demo (Updating)](#grounded-sam-2-florence-2-image-demo-updating)
 - [Citation](#citation)
 
 
@@ -236,28 +236,48 @@ In this section, we will explore how to integrate the feature-rich and robust op
 | Dense Region Caption | `<DENSE_REGION_CAPTION>` | &#10008; | Detect main objects with short description |
 | Region Proposal | `<REGION_PROPOSAL>` | &#10008; | Generate proposals without category name |
 | Phrase Grounding | `<CAPTION_TO_PHRASE_GROUNDING>` | &#10004; | Ground main objects in image mentioned in caption |
+| Referring Expression Segmentation | `<REFERRING_EXPRESSION_SEGMENTATION>` | &#10004; | Ground the object which is most related to the text input |
 
 
 Integrate `Florence-2` with `SAM-2`, we can build a strong vision pipeline to solve complex vision tasks, you can try the following scripts to run the demo:
 
 **Object Detection and Segmentation**
 ```bash
-python grounded_sam2_image_demo_florence2.py --pipeline object_detection_segmentation --image_path ./notebooks/images/cars.jpg
+python grounded_sam2_image_demo_florence2.py \
+    --pipeline object_detection_segmentation \
+    --image_path ./notebooks/images/cars.jpg
 ```
 
 **Dense Region Caption and Segmentation**
 ```bash
-python grounded_sam2_image_demo_florence2.py --pipeline dense_region_caption_segmentation --image_path ./notebooks/images/cars.jpg
+python grounded_sam2_image_demo_florence2.py \
+    --pipeline dense_region_caption_segmentation \
+    --image_path ./notebooks/images/cars.jpg
 ```
 
 **Region Proposal and Segmentation**
 ```bash
-python grounded_sam2_image_demo_florence2.py --pipeline region_proposal_segmentation --image_path ./notebooks/images/cars.jpg
+python grounded_sam2_image_demo_florence2.py \
+    --pipeline region_proposal_segmentation \
+    --image_path ./notebooks/images/cars.jpg
 ```
 
 **Phrase Grounding and Segmentation**
 ```bash
-python grounded_sam2_image_demo_florence2.py --pipeline phrase_grounding_and_segmentation --image_path ./notebooks/images/cars.jpg
+python grounded_sam2_image_demo_florence2.py \
+    --pipeline phrase_grounding_segmentation \
+    --image_path ./notebooks/images/cars.jpg \
+    --text_input "The image shows two vintage Chevrolet cars parked side by side, with one being a red convertible and the other a pink sedan, \
+            set against the backdrop of an urban area with a multi-story building and trees. \
+            The cars have Cuban license plates, indicating a location likely in Cuba."
+```
+
+**Referring Expression Segmentation**
+```bash
+python grounded_sam2_image_demo_florence2.py \
+    --pipeline referring_expression_segmentation \
+    --image_path ./notebooks/images/cars.jpg \
+    --text_input "The left red car."
 ```
 
 
