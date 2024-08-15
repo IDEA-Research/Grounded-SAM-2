@@ -68,7 +68,7 @@ CommonUtils.creat_dirs(json_data_dir)
 # scan all the JPEG frame names in this directory
 frame_names = [
     p for p in os.listdir(video_dir)
-    if os.path.splitext(p)[-1] in [".jpg", ".jpeg", ".JPG", ".JPEG"]
+    if os.path.splitext(p)[-1] in [".jpg", ".jpeg", ".JPG", ".JPEG", ".png", ".PNG"]
 ]
 frame_names.sort(key=lambda p: int(os.path.splitext(p)[0]))
 

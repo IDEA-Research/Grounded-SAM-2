@@ -223,6 +223,13 @@ If you want to try `Grounding DINO 1.5` model, you can run the following scripts
 python grounded_sam2_tracking_demo_with_continuous_id_gd1.5.py
 ```
 
+### Grounded-SAM-2 Video Object Tracking with Continuous ID plus Reverse Tracking(with Grounding DINO)
+This method could simply cover the whole lifetime of the object
+```bash
+python grounded_sam2_tracking_demo_with_continuous_id_plus.py
+
+```
+
 ## Grounded SAM 2 Florence-2 Demos
 ### Grounded SAM 2 Florence-2 Image Demo (Updating)
 

@@ -4,7 +4,7 @@ from tqdm import tqdm
 
 def create_video_from_images(image_folder, output_video_path, frame_rate=25):
     # define valid extension
-    valid_extensions = [".jpg", ".jpeg", ".JPG", ".JPEG"]
+    valid_extensions = [".jpg", ".jpeg", ".JPG", ".JPEG", ".png", ".PNG"]
     
     # get all image files in the folder
     image_files = [f for f in os.listdir(image_folder) 

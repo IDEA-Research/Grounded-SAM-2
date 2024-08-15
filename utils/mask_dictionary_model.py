@@ -67,7 +67,9 @@ class MaskDictionaryModel:
     def get_target_class_name(self, instance_id):
         return self.labels[instance_id].class_name
 
-
+    def get_target_logit(self, instance_id):
+        return self.labels[instance_id].logit
+    
     @staticmethod
     def calculate_iou(mask1, mask2):
         # Convert masks to float tensors for calculations
@@ -90,7 +92,20 @@ class MaskDictionaryModel:
             "promote_type": self.promote_type,
             "labels": {k: v.to_dict() for k, v in self.labels.items()}
         }
-
+    
+    def to_json(self, json_file):
+        with open(json_file, "w") as f:
+            json.dump(self.to_dict(), f, indent=4)
+            
+    def from_json(self, json_file):
+        with open(json_file, "r") as f:
+            data = json.load(f)
+            self.mask_name = data["mask_name"]
+            self.mask_height = data["mask_height"]
+            self.mask_width = data["mask_width"]
+            self.promote_type = data["promote_type"]
+            self.labels = {int(k): ObjectInfo(**v) for k, v in data["labels"].items()}
+        return self
 
 
 @dataclass
