@@ -253,28 +253,28 @@ Integrate `Florence-2` with `SAM-2`, we can build a strong vision pipeline to so
 
 **Object Detection and Segmentation**
 ```bash
-python grounded_sam2_image_demo_florence2.py \
+python grounded_sam2_florence2_image_demo.py \
     --pipeline object_detection_segmentation \
     --image_path ./notebooks/images/cars.jpg
 ```
 
 **Dense Region Caption and Segmentation**
 ```bash
-python grounded_sam2_image_demo_florence2.py \
+python grounded_sam2_florence2_image_demo.py \
     --pipeline dense_region_caption_segmentation \
     --image_path ./notebooks/images/cars.jpg
 ```
 
 **Region Proposal and Segmentation**
 ```bash
-python grounded_sam2_image_demo_florence2.py \
+python grounded_sam2_florence2_image_demo.py \
     --pipeline region_proposal_segmentation \
     --image_path ./notebooks/images/cars.jpg
 ```
 
 **Phrase Grounding and Segmentation**
 ```bash
-python grounded_sam2_image_demo_florence2.py \
+python grounded_sam2_florence2_image_demo.py \
     --pipeline phrase_grounding_segmentation \
     --image_path ./notebooks/images/cars.jpg \
     --text_input "The image shows two vintage Chevrolet cars parked side by side, with one being a red convertible and the other a pink sedan, \
@@ -284,7 +284,7 @@ python grounded_sam2_image_demo_florence2.py \
 
 **Referring Expression Segmentation**
 ```bash
-python grounded_sam2_image_demo_florence2.py \
+python grounded_sam2_florence2_image_demo.py \
     --pipeline referring_expression_segmentation \
     --image_path ./notebooks/images/cars.jpg \
     --text_input "The left red car."
@@ -292,7 +292,7 @@ python grounded_sam2_image_demo_florence2.py \
 
 **Open-Vocabulary Detection and Segmentation**
 ```bash
-python grounded_sam2_image_demo_florence2.py \
+python grounded_sam2_florence2_image_demo.py \
     --pipeline open_vocabulary_detection_segmentation \
     --image_path ./notebooks/images/cars.jpg \
     --text_input "two cars"
