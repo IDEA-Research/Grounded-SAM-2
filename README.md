@@ -283,6 +283,13 @@ python grounded_sam2_image_demo_florence2.py \
     --text_input "The left red car."
 ```
 
+**Open-Vocabulary Detection and Segmentation**
+```bash
+python grounded_sam2_image_demo_florence2.py \
+    --pipeline open_vocabulary_detection_segmentation \
+    --image_path ./notebooks/images/cars.jpg \
+    --text_input "two cars"
+```
 
 ### Citation
 
