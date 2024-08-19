@@ -28,8 +28,10 @@ Grounded SAM 2 does not introduce significant methodological changes compared to
   - [Grounded SAM 2 Video Object Tracking with Custom Video Input (using Grounding DINO 1.5 & 1.6)](#grounded-sam-2-video-object-tracking-demo-with-custom-video-input-with-grounding-dino-15--16)
   - [Grounded SAM 2 Video Object Tracking with Continues ID (using Grounding DINO)](#grounded-sam-2-video-object-tracking-with-continuous-id-with-grounding-dino)
 - [Grounded SAM 2 Florence-2 Demos](#grounded-sam-2-florence-2-demos)
-  - [Grounded SAM 2 Florence-2 Image Demo (Updating)](#grounded-sam-2-florence-2-image-demo-updating)
+  - [Grounded SAM 2 Florence-2 Image Demo](#grounded-sam-2-florence-2-image-demo-updating)
+  - [Grounded SAM 2 Florence-2 Image Auto-Labeling Demo](#grounded-sam-2-florence-2-image-auto-labeling-demo)
 - [Citation](#citation)
+
 
 
 ## Installation
@@ -231,7 +233,7 @@ python grounded_sam2_tracking_demo_with_continuous_id_plus.py
 ```
 
 ## Grounded SAM 2 Florence-2 Demos
-### Grounded SAM 2 Florence-2 Image Demo (Updating)
+### Grounded SAM 2 Florence-2 Image Demo
 
 In this section, we will explore how to integrate the feature-rich and robust open-source models [Florence-2](https://arxiv.org/abs/2311.06242) and SAM 2 to develop practical applications.
 
@@ -244,6 +246,7 @@ In this section, we will explore how to integrate the feature-rich and robust op
 | Region Proposal | `<REGION_PROPOSAL>` | &#10008; | Generate proposals without category name |
 | Phrase Grounding | `<CAPTION_TO_PHRASE_GROUNDING>` | &#10004; | Ground main objects in image mentioned in caption |
 | Referring Expression Segmentation | `<REFERRING_EXPRESSION_SEGMENTATION>` | &#10004; | Ground the object which is most related to the text input |
+| Open Vocabulary Detection and Segmentation | `<OPEN_VOCABULARY_DETECTION>` | &#10004; | Ground any object with text input |
 
 
 Integrate `Florence-2` with `SAM-2`, we can build a strong vision pipeline to solve complex vision tasks, you can try the following scripts to run the demo:
@@ -297,6 +300,27 @@ python grounded_sam2_florence2_image_demo.py \
     --image_path ./notebooks/images/cars.jpg \
     --text_input "two cars"
 ```
+
+### Grounded SAM 2 Florence-2 Image Auto-Labeling Demo
+`Florence-2` can be used as a auto image annotator by cascading its caption capability with its grounding capability. 
+
+| Task | Task Prompt | Text Input |
+|:---:|:---:|:---:|
+| Caption + Phrase Grounding | `<CAPTION>` + `<CAPTION_TO_PHRASE_GROUNDING>` | &#10008; |
+| Detailed Caption + Phrase Grounding | `<DETAILED_CAPTION>` + `<CAPTION_TO_PHRASE_GROUNDING>` | &#10008; |
+| More Detailed Caption + Phrase Grounding | `<MORE_DETAILED_CAPTION>` + `<CAPTION_TO_PHRASE_GROUNDING>` | &#10008; |
+
+You can try the following scripts to run these demo:
+
+**Caption to Phrase Grounding**
+```bash
+python grounded_sam2_florence2_autolabel_pipeline.py \
+    --image_path ./notebooks/images/groceries.jpg \
+    --pipeline caption_to_phrase_grounding \
+    --caption_type caption
+```
+
+- You can specify `caption_type` to control the granularity of the caption, if you want a more detailed caption, you can try `--caption_type detailed_caption` or `--caption_type more_detailed_caption`.
 
 ### Citation
 
