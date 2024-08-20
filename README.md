@@ -298,8 +298,10 @@ python grounded_sam2_florence2_image_demo.py \
 python grounded_sam2_florence2_image_demo.py \
     --pipeline open_vocabulary_detection_segmentation \
     --image_path ./notebooks/images/cars.jpg \
-    --text_input "two cars"
+    --text_input "car <and> building"
 ```
+- Note that if you want to detect multi-objects you should split them with `<and>` in your input text.
+
 
 ### Grounded SAM 2 Florence-2 Image Auto-Labeling Demo
 `Florence-2` can be used as a auto image annotator by cascading its caption capability with its grounding capability. 
