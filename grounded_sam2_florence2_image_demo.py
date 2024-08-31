@@ -109,7 +109,7 @@ def object_detection_and_segmentation(
     text_input=None,
     output_dir=OUTPUT_DIR
 ):
-    assert text_input is None, "Text input should not be none when calling object detection pipeline."
+    assert text_input is None, "Text input should be None when calling object detection pipeline."
     # run florence-2 object detection in demo
     image = Image.open(image_path).convert("RGB")
     results = run_florence2(task_prompt, text_input, florence2_model, florence2_processor, image)
@@ -185,7 +185,7 @@ def dense_region_caption_and_segmentation(
     text_input=None,
     output_dir=OUTPUT_DIR
 ):
-    assert text_input is None, "Text input should not be none when calling dense region caption pipeline."
+    assert text_input is None, "Text input should be None when calling dense region caption pipeline."
     # run florence-2 object detection in demo
     image = Image.open(image_path).convert("RGB")
     results = run_florence2(task_prompt, text_input, florence2_model, florence2_processor, image)
@@ -262,7 +262,7 @@ def region_proposal_and_segmentation(
     text_input=None,
     output_dir=OUTPUT_DIR
 ):
-    assert text_input is None, "Text input should not be none when calling region proposal pipeline."
+    assert text_input is None, "Text input should be None when calling region proposal pipeline."
     # run florence-2 object detection in demo
     image = Image.open(image_path).convert("RGB")
     results = run_florence2(task_prompt, text_input, florence2_model, florence2_processor, image)
@@ -355,7 +355,7 @@ def phrase_grounding_and_segmentation(
         }
     }
     """
-    assert text_input is not None, "Text input should not be none when calling phrase grounding pipeline."
+    assert text_input is not None, "Text input should not be None when calling phrase grounding pipeline."
     results = results[task_prompt]
     # parse florence-2 detection results
     input_boxes = np.array(results["bboxes"])
@@ -428,7 +428,7 @@ def referring_expression_segmentation(
         }
     }
     """
-    assert text_input is not None, "Text input should not be none when calling referring segmentation pipeline."
+    assert text_input is not None, "Text input should not be None when calling referring segmentation pipeline."
     results = results[task_prompt]
     # parse florence-2 detection results
     polygon_points = np.array(results["polygons"][0], dtype=np.int32).reshape(-1, 2)
@@ -542,7 +542,7 @@ def open_vocabulary_detection_and_segmentation(
         }
     }
     """
-    assert text_input is not None, "Text input should not be none when calling open-vocabulary detection pipeline."
+    assert text_input is not None, "Text input should not be None when calling open-vocabulary detection pipeline."
     results = results[task_prompt]
     # parse florence-2 detection results
     input_boxes = np.array(results["bboxes"])
