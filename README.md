@@ -24,6 +24,7 @@ Grounded SAM 2 does not introduce significant methodological changes compared to
 - [Grounded SAM 2 Demos](#grounded-sam-2-demos)
   - [Grounded SAM 2 Image Demo](#grounded-sam-2-image-demo-with-grounding-dino)
   - [Grounded SAM 2 Image Demo (with Grounding DINO 1.5 & 1.6)](#grounded-sam-2-image-demo-with-grounding-dino-15--16)
+  - [Automatically Saving Grounding and Segmentation Results](#automatically-saving-grounding-results-image-demo)
   - [Grounded SAM 2 Video Object Tracking Demo](#grounded-sam-2-video-object-tracking-demo)
   - [Grounded SAM 2 Video Object Tracking Demo (with Grounding DINO 1.5 & 1.6)](#grounded-sam-2-video-object-tracking-demo-with-grounding-dino-15--16)
   - [Grounded SAM 2 Video Object Tracking with Custom Video Input (using Grounding DINO)](#grounded-sam-2-video-object-tracking-demo-with-custom-video-input-with-grounding-dino)
@@ -127,6 +128,37 @@ Apply your API token from our official website here: [request API token](https:/
 ```bash
 python grounded_sam2_gd1.5_demo.py
 ```
+
+### Automatically Saving Grounding Results (Image Demo)
+
+After setting `DUMP_JSON_RESULTS=True` in the following Grounded SAM 2 Image Demos:
+- [grounded_sam2_local_demo.py](./grounded_sam2_local_demo.py)
+- [grounded_sam2_hf_model_demo.py](./grounded_sam2_hf_model_demo.py)
+- [grounded_sam2_gd1.5_demo.py](./grounded_sam2_gd1.5_demo.py)
+
+The `grounding` and `segmentation` results will be automatically saved in the `outputs` dir with the following format:
+
+```python
+{
+    "image_path": "path/to/image.jpg",
+    "annotations": [
+        {
+            "class_name": "class_name",
+            "bbox": [x1, y1, x2, y2],
+            "segmentation": {
+                "size": [h, w],
+                "counts": "rle_encoded_mask"
+            },
+            "score": confidence score
+        }
+    ],
+    "box_format": "xyxy",
+    "img_width": w,
+    "img_height": h
+}
+```
+
+
 
 ### Grounded SAM 2 Video Object Tracking Demo
 
