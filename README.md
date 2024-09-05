@@ -200,6 +200,12 @@ Users can upload their own video file (e.g. `assets/hippopotamus.mp4`) and speci
 python grounded_sam2_tracking_demo_custom_video_input_gd1.0_hf_model.py
 ```
 
+If you are not convenient to use huggingface demo, you can also run tracking demo with local grounding dino model with the following scripts:
+
+```bash
+python grounded_sam2_tracking_demo_custom_video_input_gd1.0_local_model.py
+```
+
 ### Grounded SAM 2 Video Object Tracking Demo with Custom Video Input (with Grounding DINO 1.5 & 1.6)
 
 Users can upload their own video file (e.g. `assets/hippopotamus.mp4`) and specify their custom text prompts for grounding and tracking with Grounding DINO 1.5 and SAM 2 by using the following scripts:
