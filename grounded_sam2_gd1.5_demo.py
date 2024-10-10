@@ -24,8 +24,8 @@ Hyper parameters
 API_TOKEN = "Your API token"
 TEXT_PROMPT = "car . building ."
 IMG_PATH = "notebooks/images/cars.jpg"
-SAM2_CHECKPOINT = "./checkpoints/sam2_hiera_large.pt"
-SAM2_MODEL_CONFIG = "sam2_hiera_l.yaml"
+SAM2_CHECKPOINT = "./checkpoints/sam2.1_hiera_large.pt"
+SAM2_MODEL_CONFIG = "configs/sam2.1/sam2.1_hiera_l.yaml"
 GROUNDING_MODEL = DetectionModel.GDino1_5_Pro # DetectionModel.GDino1_6_Pro
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 OUTPUT_DIR = Path("outputs/grounded_sam2_gd1.5_demo")
