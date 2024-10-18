@@ -341,7 +341,7 @@ python grounded_sam2_florence2_image_demo.py \
     --image_path ./notebooks/images/cars.jpg \
     --text_input "car <and> building"
 ```
-- Note that if you want to detect multi-objects you should split them with `<and>` in your input text.
+- Note that if you want to **detect multiple classes** you should split them with `<and>` in your input text.
 
 
 ### Grounded SAM 2 Florence-2 Image Auto-Labeling Demo
