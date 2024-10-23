@@ -146,6 +146,8 @@ mask_annotator = sv.MaskAnnotator()
 annotated_frame = mask_annotator.annotate(scene=annotated_frame, detections=detections)
 cv2.imwrite(os.path.join(OUTPUT_DIR, "grounded_sam2_annotated_image_with_mask.jpg"), annotated_frame)
 
+print(f'Annotated image has already been saved as to "{OUTPUT_DIR}"')
+
 """
 Dump the results in standard format and save as json files
 """
@@ -156,6 +158,7 @@ def single_mask_to_rle(mask):
     return rle
 
 if DUMP_JSON_RESULTS:
+    print("Start dumping the annotation...")
     # convert mask into rle format
     mask_rles = [single_mask_to_rle(mask) for mask in masks]
 
@@ -182,3 +185,5 @@ if DUMP_JSON_RESULTS:
     
     with open(os.path.join(OUTPUT_DIR, "grounded_sam2_gd1.5_image_demo_results.json"), "w") as f:
         json.dump(results, f, indent=4)
+
+    print(f'Annotation has already been saved to "{OUTPUT_DIR}"')
