@@ -14,6 +14,7 @@ Grounded SAM 2 does not introduce significant methodological changes compared to
 
 ## News
 
+- `2024/10/24`: Support [SAHI (Slicing Aided Hyper Inference)](https://docs.ultralytics.com/guides/sahi-tiled-inference/) on Grounded SAM 2 (with Grounding DINO 1.5) which may be helpful for inferencing high resolution image with dense small objects (e.g. **4K** images).
 - `2024/10/10`: Support `SAM-2.1` models, if you want to use `SAM 2.1` model, you need to update to the latest code and reinstall SAM 2 follow [SAM 2.1 Installation](https://github.com/facebookresearch/sam2?tab=readme-ov-file#latest-updates).
 - `2024/08/31`: Support `dump json results` in Grounded SAM 2 Image Demos (with Grounding DINO).
 - `2024/08/20`: Support **Florence-2 SAM 2 Image Demo** which includes `dense region caption`, `object detection`, `phrase grounding`, and cascaded auto-label pipeline `caption + phrase grounding`.
@@ -25,6 +26,7 @@ Grounded SAM 2 does not introduce significant methodological changes compared to
 - [Grounded SAM 2 Demos](#grounded-sam-2-demos)
   - [Grounded SAM 2 Image Demo](#grounded-sam-2-image-demo-with-grounding-dino)
   - [Grounded SAM 2 Image Demo (with Grounding DINO 1.5 & 1.6)](#grounded-sam-2-image-demo-with-grounding-dino-15--16)
+  - [Grounded SAM 2 with SAHI for High Resolution Image Inference](#sahi-slicing-aided-hyper-inference-with-grounding-dino-15-and-sam-2)
   - [Automatically Saving Grounding and Segmentation Results](#automatically-saving-grounding-results-image-demo)
   - [Grounded SAM 2 Video Object Tracking Demo](#grounded-sam-2-video-object-tracking-demo)
   - [Grounded SAM 2 Video Object Tracking Demo (with Grounding DINO 1.5 & 1.6)](#grounded-sam-2-video-object-tracking-demo-with-grounding-dino-15--16)
@@ -129,6 +131,24 @@ Apply your API token from our official website here: [request API token](https:/
 ```bash
 python grounded_sam2_gd1.5_demo.py
 ```
+
+### SAHI (Slicing Aided Hyper Inference) with Grounding DINO 1.5 and SAM 2
+
+If your images are high resolution with dense objects, directly using Grounding DINO 1.5 for inference on the original image may not be the best choice. We support [SAHI (Slicing Aided Hyper Inference)](https://docs.ultralytics.com/guides/sahi-tiled-inference/), which works by first dividing the original image into smaller overlapping patches. Inference is then performed separately on each patch, and the final detection results are merged. This method is highly effective and accuracy for dense and small objects detection in high resolution images.
+
+You can run SAHI inference by setting the following param in [grounded_sam2_gd1.5_demo.py](./grounded_sam2_gd1.5_demo.py):
+
+```python
+WITH_SLICE_INFERENCE = True
+```
+
+The visualization is shown as follows:
+
+| Text Prompt | Input Image | Grounded SAM 2 | Grounded SAM 2 with SAHI |
+|:----:|:----:|:----:|:----:|
+| `Person` | ![](https://github.com/IDEA-Research/detrex-storage/blob/main/assets/grounded_sam_2/demo_images/dense%20people.png?raw=true) | ![](https://github.com/IDEA-Research/detrex-storage/blob/main/assets/grounded_sam_2/grounding_dino_1.5_slice_inference/grounded_sam2_annotated_image_with_mask.jpg?raw=true) | ![](https://github.com/IDEA-Research/detrex-storage/blob/main/assets/grounded_sam_2/grounding_dino_1.5_slice_inference/grounded_sam2_annotated_image_with_mask_with_slice_inference.jpg?raw=true) |
+
+- **Notes:** We only support SAHI on Grounding DINO 1.5 because it works better with stronger grounding model which may produce less hallucination results.
 
 ### Automatically Saving Grounding Results (Image Demo)
 
