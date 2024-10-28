@@ -41,8 +41,8 @@ Init Florence-2 and SAM 2 Model
 """
 
 FLORENCE2_MODEL_ID = "microsoft/Florence-2-large"
-SAM2_CHECKPOINT = "./checkpoints/sam2_hiera_large.pt"
-SAM2_CONFIG = "sam2_hiera_l.yaml"
+SAM2_CHECKPOINT = "./checkpoints/sam2.1_hiera_large.pt"
+SAM2_CONFIG = "configs/sam2.1/sam2.1_hiera_l.yaml"
 
 # environment settings
 # use bfloat16

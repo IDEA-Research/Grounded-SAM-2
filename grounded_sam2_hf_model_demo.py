@@ -1,3 +1,4 @@
+import argparse
 import os
 import cv2
 import json
@@ -16,14 +17,25 @@ from transformers import AutoProcessor, AutoModelForZeroShotObjectDetection
 """
 Hyper parameters
 """
-GROUNDING_MODEL = "IDEA-Research/grounding-dino-tiny"
-TEXT_PROMPT = "car. tire."
-IMG_PATH = "notebooks/images/truck.jpg"
-SAM2_CHECKPOINT = "./checkpoints/sam2_hiera_large.pt"
-SAM2_MODEL_CONFIG = "sam2_hiera_l.yaml"
-DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-OUTPUT_DIR = Path("outputs/grounded_sam2_hf_model_demo")
-DUMP_JSON_RESULTS = True
+parser = argparse.ArgumentParser()
+parser.add_argument('--grounding-model', default="IDEA-Research/grounding-dino-tiny")
+parser.add_argument("--text-prompt", default="car. tire.")
+parser.add_argument("--img-path", default="notebooks/images/truck.jpg")
+parser.add_argument("--sam2-checkpoint", default="./checkpoints/sam2.1_hiera_large.pt")
+parser.add_argument("--sam2-model-config", default="configs/sam2.1/sam2.1_hiera_l.yaml")
+parser.add_argument("--output-dir", default="outputs/test_sam2.1")
+parser.add_argument("--no-dump-json", action="store_true")
+parser.add_argument("--force-cpu", action="store_true")
+args = parser.parse_args()
+
+GROUNDING_MODEL = args.grounding_model
+TEXT_PROMPT = args.text_prompt
+IMG_PATH = args.img_path
+SAM2_CHECKPOINT = args.sam2_checkpoint
+SAM2_MODEL_CONFIG = args.sam2_model_config
+DEVICE = "cuda" if torch.cuda.is_available() and not args.force_cpu else "cpu"
+OUTPUT_DIR = Path(args.output_dir)
+DUMP_JSON_RESULTS = not args.no_dump_json
 
 # create output directory
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
