@@ -88,6 +88,13 @@ cd Grounded-SAM-2
 make build-image
 make run
 ```
+
+If you do not have the checkpoint files required for the model, you should run the following command to download them:
+```
+bash checkpoints/download_ckpts.sh
+```
+
+
 After executing these commands, you will be inside the Docker environment. The working directory within the container is set to: `/home/appuser/Grounded-SAM-2`
 
 Once inside the Docker environment, you can start the demo by running:
