@@ -1,12 +1,16 @@
 # Grounded SAM 2: Ground and Track Anything in Videos
 
- Grounded SAM 2: Ground and Track Anything in Videos with [Grounding DINO](https://arxiv.org/abs/2303.05499), [Grounding DINO 1.5](https://arxiv.org/abs/2405.10300), [Florence-2](https://arxiv.org/abs/2311.06242) and [SAM 2](https://arxiv.org/abs/2408.00714).
-
 **[IDEA-Research](https://ai.meta.com/research/)**
 
 [Tianhe Ren](https://rentainhe.github.io/), [Shuo Shen](https://github.com/ShuoShenDe)
 
+[[`SAM2 Paper`](https://arxiv.org/abs/2408.00714)] [[`Grounding DINO Paper`](https://arxiv.org/abs/2303.05499)] [[`Grounding DINO 1.5 Paper`](https://arxiv.org/abs/2405.10300)] [[`BibTeX`](#citation)]
+
+[![Video Name](./assets/grounded_sam_2_intro.jpg)](https://github.com/user-attachments/assets/f0fb0022-779a-49fb-8f46-3a18a8b4e893)
+
 **🔥 Project Highlight**
+
+ Grounded SAM 2 is a foundation model pipeline towards grounding and track anything in Videos with [Grounding DINO](https://arxiv.org/abs/2303.05499), [Grounding DINO 1.5](https://arxiv.org/abs/2405.10300), [Florence-2](https://arxiv.org/abs/2311.06242) and [SAM 2](https://arxiv.org/abs/2408.00714).
 
 In this repo, we've supported the following demo with **simple implementations**:
 - **Ground and Segment Anything** with Grounding DINO, Grounding DINO 1.5 & 1.6 and SAM 2
