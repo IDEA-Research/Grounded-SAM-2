@@ -44,7 +44,7 @@ grounding_model = AutoModelForZeroShotObjectDetection.from_pretrained(model_id).
 
 # setup the input image and text prompt for SAM 2 and Grounding DINO
 # VERY important: text queries need to be lowercased + end with a dot
-text = "bear."
+text = "car."
 
 # `video_dir` a directory of JPEG frames with filenames like `<frame_index>.jpg`  
 video_dir = "notebooks/videos/car"
