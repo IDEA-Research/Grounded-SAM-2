@@ -101,7 +101,6 @@ if WITH_SLICE_INFERENCE:
     class_names = [class_id_to_name[id] for id in detections.class_id]
     confidences = detections.confidence
     class_ids = detections.class_id
-    import pdb; pdb.set_trace()
     input_boxes = detections.xyxy
 else:
     image_url = client.upload_file(IMG_PATH)
