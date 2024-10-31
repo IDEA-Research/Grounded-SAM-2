@@ -130,7 +130,7 @@ We've already released our most capable open-set detection model [Grounding DINO
 Install the latest DDS cloudapi:
 
 ```bash
-pip install dds-cloudapi-sdk
+pip install dds-cloudapi-sdk --upgrade
 ```
 
 Apply your API token from our official website here: [request API token](https://deepdataspace.com/request_api).

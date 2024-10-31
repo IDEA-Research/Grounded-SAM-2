@@ -28,6 +28,7 @@ IMG_PATH = "notebooks/images/cars.jpg"
 SAM2_CHECKPOINT = "./checkpoints/sam2.1_hiera_large.pt"
 SAM2_MODEL_CONFIG = "configs/sam2.1/sam2.1_hiera_l.yaml"
 GROUNDING_MODEL = DetectionModel.GDino1_5_Pro # DetectionModel.GDino1_6_Pro
+BOX_THRESHOLD = 0.2
 WITH_SLICE_INFERENCE = False
 SLICE_WH = (480, 480)
 OVERLAP_RATIO = (0.2, 0.2)
@@ -69,6 +70,7 @@ if WITH_SLICE_INFERENCE:
             prompts=[TextPrompt(text=TEXT_PROMPT)],
             targets=[DetectionTarget.BBox],  # detect bbox
             model=GROUNDING_MODEL,  # detect with GroundingDino-1.5-Pro model
+            bbox_threshold=BOX_THRESHOLD, # box confidence threshold
         )
         client.run_task(task)
         result = task.result
@@ -110,6 +112,7 @@ else:
         prompts=[TextPrompt(text=TEXT_PROMPT)],
         targets=[DetectionTarget.BBox],  # detect bbox
         model=GROUNDING_MODEL,  # detect with GroundingDINO-1.5-Pro model
+        bbox_threshold=BOX_THRESHOLD, # box confidence threshold
     )
 
     client.run_task(task)

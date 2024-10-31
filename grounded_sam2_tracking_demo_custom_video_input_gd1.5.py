@@ -30,6 +30,7 @@ SOURCE_VIDEO_FRAME_DIR = "./custom_video_frames"
 SAVE_TRACKING_RESULTS_DIR = "./tracking_results"
 API_TOKEN_FOR_GD1_5 = "Your API token"
 PROMPT_TYPE_FOR_VIDEO = "box" # choose from ["point", "box", "mask"]
+BOX_THRESHOLD = 0.2
 
 """
 Step 1: Environment settings and model initialization for SAM 2
@@ -108,6 +109,7 @@ task = DetectionTask(
     prompts=[TextPrompt(text=TEXT_PROMPT)],
     targets=[DetectionTarget.BBox],  # detect bbox
     model=DetectionModel.GDino1_6_Pro,  # detect with GroundingDino-1.5-Pro model
+    bbox_threshold=BOX_THRESHOLD,
 )
 
 client.run_task(task)

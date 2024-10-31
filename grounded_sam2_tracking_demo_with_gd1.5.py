@@ -80,6 +80,7 @@ task = DetectionTask(
     prompts=[TextPrompt(text="children. pillow")],
     targets=[DetectionTarget.BBox],  # detect bbox
     model=DetectionModel.GDino1_5_Pro,  # detect with GroundingDino-1.5-Pro model
+    bbox_threshold=0.2,
 )
 
 client.run_task(task)
