@@ -17,7 +17,7 @@ Define Some Hyperparam
 TASK_PROMPT = {
     "caption": "<CAPTION>",
     "detailed_caption": "<DETAILED_CAPTION>",
-    "more_detailed_caption": "<MORE_DETAILED_CAPTION",
+    "more_detailed_caption": "<MORE_DETAILED_CAPTION>",
     "object_detection": "<OD>",
     "dense_region_caption": "<DENSE_REGION_CAPTION>",
     "region_proposal": "<REGION_PROPOSAL>",
