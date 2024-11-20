@@ -217,8 +217,7 @@ class SAM2Base(torch.nn.Module):
         self.memory_bank_obj_score_threshold = memory_bank_obj_score_threshold
         self.memory_bank_kf_score_threshold = memory_bank_kf_score_threshold
 
-        print(f"SAMURAI mode: {self.samurai_mode}")
-        print(f"Stable frames threshold: {self.stable_frames_threshold}")
+        print(f"\033[93mSAMURAI mode: {self.samurai_mode}\033[0m")
 
         # Model compilation
         if compile_image_encoder:

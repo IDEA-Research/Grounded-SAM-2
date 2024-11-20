@@ -155,5 +155,6 @@ cython_debug/
 
 # evaluation results
 evaluation_results/*
-raw_results/*
+results/*
 debug/*
+visualization/*
