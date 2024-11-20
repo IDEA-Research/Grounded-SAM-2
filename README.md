@@ -1,41 +1,14 @@
 # 🌊 SAMURAI: Adapting Segment Anything Model for Zero-Shot Visual Tracking with Motion-Aware Memory
 
-[[Arxiv]]() [[Project Page]]() [[Raw Results]]()
+[[Arxiv]](https://arxiv.org/abs/2411.11922) [[Project Page]](https://yangchris11.github.io/samurai/) 
 
 This repository is the official implementation of SAMURAI: Adapting Segment Anything Model for Zero-Shot Visual Tracking with Motion-Aware Memory
 
 https://github.com/user-attachments/assets/9d368ca7-2e9b-4fed-9da0-d2efbf620d88
 
-## Getting Started
+## Code
 
-#### SAMURAI Installation 
-
-SAM 2 needs to be installed first before use. The code requires `python>=3.10`, as well as `torch>=2.3.1` and `torchvision>=0.18.1`. Please follow the instructions [here](https://github.com/facebookresearch/sam2?tab=readme-ov-file) to install both PyTorch and TorchVision dependencies. You can install **the SAMURAI version** of SAM 2 on a GPU machine using:
-```
-cd sam2
-pip install -e .
-pip install -e ".[notebooks]"
-```
-
-Please see [INSTALL.md](https://github.com/facebookresearch/sam2/blob/main/INSTALL.md) from the original SAM 2 repository for FAQs on potential issues and solutions.
-
-```
-pip install requirements.txt
-```
-
-#### SAM 2.1 Checkpoint Download
-
-```
-cd checkpoints && \
-./download_ckpts.sh && \
-cd ..
-```
-
-#### Dataset Preparation
-
-#### Run SAMURAI
-
-<!-- ## Main Results -->
+Coming soon!
 
 ## Acknowledgment
 
@@ -55,11 +28,13 @@ Please consider citing our paper and the wonderful `SAM 2` if you found our work
   year={2024}
 }
 
-@article{yang2024samurai,
-  title={Adapting Segment Anything Model for Zero-Shot Visual Tracking with Motion-Aware Memory},
-  author={Yang, Cheng-Yen and Huang, Hsiang-Wei and Chai, Wenhao and Jiang, Zhongyu and Hwang, Jenq-Neng},
-  journal={},
-  url={},
-  year={2024}
+@misc{yang2024samurai,
+      title={SAMURAI: Adapting Segment Anything Model for Zero-Shot Visual Tracking with Motion-Aware Memory}, 
+      author={Cheng-Yen Yang and Hsiang-Wei Huang and Wenhao Chai and Zhongyu Jiang and Jenq-Neng Hwang},
+      year={2024},
+      eprint={2411.11922},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2411.11922}, 
 }
 ```
