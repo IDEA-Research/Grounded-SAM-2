@@ -5,7 +5,7 @@
 
 [Cheng-Yen Yang](https://yangchris11.github.io), [Hsiang-Wei Huang](https://hsiangwei0903.github.io/), [Wenhao Chai](https://rese1f.github.io/), [Zhongyu Jiang](https://zhyjiang.github.io/#/), [Jenq-Neng Hwang](https://people.ece.uw.edu/hwang/)
 
-University of Washington
+[Information Processing Lab, University of Washington](https://ipl-uw.github.io/) 
 </div>
 
 
