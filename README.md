@@ -31,7 +31,7 @@ pip install -e ".[notebooks]"
 
 Please see [INSTALL.md](https://github.com/facebookresearch/sam2/blob/main/INSTALL.md) from the original SAM 2 repository for FAQs on potential issues and solutions.
 ```
-pip install requirements.txt
+pip install matplotlib==3.7 tikzplotlib jpeg4py opencv-python lmdb pandas scipy
 ```
 
 #### SAM 2.1 Checkpoint Download
