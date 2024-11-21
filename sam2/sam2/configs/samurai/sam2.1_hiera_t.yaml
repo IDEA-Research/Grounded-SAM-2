@@ -124,7 +124,7 @@ model:
   stable_frames_threshold: 15
   stable_ious_threshold: 0.3
   min_obj_score_logits: -1
-  kf_score_weight: 0.15
+  kf_score_weight: 0.25
   memory_bank_iou_threshold: 0.5
   memory_bank_obj_score_threshold: 0.0
   memory_bank_kf_score_threshold: 0.0
