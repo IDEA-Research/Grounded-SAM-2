@@ -9,7 +9,7 @@ import sys
 sys.path.append("./sam2")
 from sam2.build_sam import build_sam2_video_predictor
 
-color = [(0, 0, 255)]
+color = [(255, 0, 0)]
 
 def load_txt(gt_path):
     with open(gt_path, 'r') as f:
