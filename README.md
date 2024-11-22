@@ -79,19 +79,15 @@ To run the demo with your custom video or frame directory, use the following exa
 
 **Note:** The `.txt` file contains a single line with the bounding box of the first frame in `xywh` format.
 
-Replace `<path_to_first_frame_bbox.txt>` with the path to your `.txt` file and `<your_video.mp4>` with your video file path, or replace it with the directory path if you want to process frames from a folder.
-
 ### Input is Video File
-If your input is a video file, run the following command:
 
 ```
 python scripts/demo.py --video_path <your_video.mp4> --txt_path <path_to_first_frame_bbox.txt>
 ```
 
 ### Input is Frame Folder
-If your input is a directory of frames, run the following command:
 ```
-python scripts/demo.py --video_path <your_frame_directory>/ --txt_path <path_to_first_frame_bbox.txt>
+python scripts/demo.py --video_path <your_frame_directory> --txt_path <path_to_first_frame_bbox.txt>
 ```
 
 ## Acknowledgment
