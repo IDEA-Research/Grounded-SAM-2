@@ -23,13 +23,13 @@ def load_txt(gt_path):
 
 def determine_model_cfg(model_path):
     if "large" in model_path:
-        return "configs/sam2.1/sam2.1_hiera_l.yaml"
+        return "configs/samurai/sam2.1_hiera_l.yaml"
     elif "base_plus" in model_path:
-        return "configs/sam2.1/sam2.1_hiera_b+.yaml"
+        return "configs/samurai/sam2.1_hiera_b+.yaml"
     elif "small" in model_path:
-        return "configs/sam2.1/sam2.1_hiera_s.yaml"
+        return "configs/samurai/sam2.1_hiera_s.yaml"
     elif "tiny" in model_path:
-        return "configs/sam2.1/sam2.1_hiera_t.yaml"
+        return "configs/samurai/sam2.1_hiera_t.yaml"
     else:
         raise ValueError("Unknown model size in path!")
 
