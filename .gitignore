@@ -158,3 +158,6 @@ evaluation_results/*
 results/*
 debug/*
 visualization/*
+
+# .DS_Store
+.DS_Store
