@@ -77,7 +77,7 @@ python scripts/main_inference.py
 
 To run the demo with your custom video or frame directory, use the following examples:
 
-**Note:** The `.txt` file contains a single line with the bounding box of the first frame in `xywh` format.
+**Note:** The `.txt` file contains a single line with the bounding box of the first frame in `x,y,w,h` format.
 
 ### Input is Video File
 
@@ -87,6 +87,7 @@ python scripts/demo.py --video_path <your_video.mp4> --txt_path <path_to_first_f
 
 ### Input is Frame Folder
 ```
+# Only JPG images are supported
 python scripts/demo.py --video_path <your_frame_directory> --txt_path <path_to_first_frame_bbox.txt>
 ```
 
