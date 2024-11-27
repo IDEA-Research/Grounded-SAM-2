@@ -93,6 +93,11 @@ python scripts/demo.py --video_path <your_video.mp4> --txt_path <path_to_first_f
 python scripts/demo.py --video_path <your_frame_directory> --txt_path <path_to_first_frame_bbox.txt>
 ```
 
+## FAQs
+**Question 1:** Do SAMURAI need training? [issue 34](https://github.com/yangchris11/samurai/issues/34)
+
+**Answer 1:** Unlike real-life samurai, the proposed samurai do not require additional training. It is a zero-shot method, we directly use the weights from SAM 2.1 to conduct VOT experiments. Kalman filter is used to estimate the current and future state (bounding box location and scale in our case) of a moving object based on measurements over time, it is a common approach that had been adapt in the field of tracking for a long time which does not requires any training. Please refer to code for more detail.
+
 ## Acknowledgment
 
 SAMURAI is built on top of [SAM 2](https://github.com/facebookresearch/sam2?tab=readme-ov-file) by Meta FAIR.
