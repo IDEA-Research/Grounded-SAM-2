@@ -10,7 +10,7 @@
 
 **🔥 Project Highlight**
 
- Grounded SAM 2 is a foundation model pipeline towards grounding and track anything in Videos with [Grounding DINO](https://arxiv.org/abs/2303.05499), [Grounding DINO 1.5](https://arxiv.org/abs/2405.10300), [Florence-2](https://arxiv.org/abs/2311.06242) and [SAM 2](https://arxiv.org/abs/2408.00714).
+ Grounded SAM 2 is a foundation model pipeline towards grounding and track anything in Videos with [Grounding DINO](https://arxiv.org/abs/2303.05499), [Grounding DINO 1.5](https://arxiv.org/abs/2405.10300), [Florence-2](https://arxiv.org/abs/2311.06242), [DINO-X](https://arxiv.org/abs/2411.14347) and [SAM 2](https://arxiv.org/abs/2408.00714).
 
 In this repo, we've supported the following demo with **simple implementations**:
 - **Ground and Segment Anything** with Grounding DINO, Grounding DINO 1.5 & 1.6, DINO-X and SAM 2
@@ -21,6 +21,7 @@ Grounded SAM 2 does not introduce significant methodological changes compared to
 
 ## Latest updates
 
+- `2024/12/02`: Support **DINO-X SAM 2 Demos**, please install the latest version of `dds-cloudapi-sdk` and refer to [Grounded SAM 2 (with DINO-X)](#grounded-sam-2-image-demo-with-dino-x) for more details.
 - `2024/10/24`: Support [SAHI (Slicing Aided Hyper Inference)](https://docs.ultralytics.com/guides/sahi-tiled-inference/) on Grounded SAM 2 (with Grounding DINO 1.5) which may be helpful for inferencing high resolution image with dense small objects (e.g. **4K** images).
 - `2024/10/10`: Support `SAM-2.1` models, if you want to use `SAM 2.1` model, you need to update to the latest code and reinstall SAM 2 follow [SAM 2.1 Installation](https://github.com/facebookresearch/sam2?tab=readme-ov-file#latest-updates).
 - `2024/08/31`: Support `dump json results` in Grounded SAM 2 Image Demos (with Grounding DINO).
@@ -33,6 +34,7 @@ Grounded SAM 2 does not introduce significant methodological changes compared to
 - [Grounded SAM 2 Demos](#grounded-sam-2-demos)
   - [Grounded SAM 2 Image Demo](#grounded-sam-2-image-demo-with-grounding-dino)
   - [Grounded SAM 2 Image Demo (with Grounding DINO 1.5 & 1.6)](#grounded-sam-2-image-demo-with-grounding-dino-15--16)
+  - [Grounded SAM 2 Image Demo (with DINO-X)](#grounded-sam-2-image-demo-with-dino-x)
   - [Grounded SAM 2 with SAHI for High Resolution Image Inference](#sahi-slicing-aided-hyper-inference-with-grounding-dino-15-and-sam-2)
   - [Automatically Saving Grounding and Segmentation Results](#automatically-saving-grounding-results-image-demo)
   - [Grounded SAM 2 Video Object Tracking Demo](#grounded-sam-2-video-object-tracking-demo)
@@ -157,12 +159,29 @@ The visualization is shown as follows:
 
 - **Notes:** We only support SAHI on Grounding DINO 1.5 because it works better with stronger grounding model which may produce less hallucination results.
 
+### Grounded SAM 2 Image Demo (with DINO-X)
+
+We've implemented Grounded SAM 2 with the strongest open-world perception model [DINO-X](https://github.com/IDEA-Research/DINO-X-API) for better open-set detection and segmentation performance. You can apply the API token first and run Grounded SAM 2 with DINO-X as follows:
+
+Install the latest DDS cloudapi:
+
+```bash
+pip install dds-cloudapi-sdk --upgrade
+```
+
+Apply your API token from our official website here: [request API token](https://deepdataspace.com/request_api).
+
+```bash
+python grounded_sam2_dinox_demo.py
+```
+
 ### Automatically Saving Grounding Results (Image Demo)
 
 After setting `DUMP_JSON_RESULTS=True` in the following Grounded SAM 2 Image Demos:
 - [grounded_sam2_local_demo.py](./grounded_sam2_local_demo.py)
 - [grounded_sam2_hf_model_demo.py](./grounded_sam2_hf_model_demo.py)
 - [grounded_sam2_gd1.5_demo.py](./grounded_sam2_gd1.5_demo.py)
+- [grounded_sam2_dinox_demo.py](./grounded_sam2_dinox_demo.py)
 
 The `grounding` and `segmentation` results will be automatically saved in the `outputs` dir with the following format:
 
