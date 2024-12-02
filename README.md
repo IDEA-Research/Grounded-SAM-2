@@ -21,7 +21,7 @@ Grounded SAM 2 does not introduce significant methodological changes compared to
 
 ## Latest updates
 
-- `2024/12/02`: Support **DINO-X SAM 2 Demos**, please install the latest version of `dds-cloudapi-sdk` and refer to [Grounded SAM 2 (with DINO-X)](#grounded-sam-2-image-demo-with-dino-x) for more details.
+- `2024/12/02`: Support **DINO-X SAM 2 Demos** (including object segmentation and tracking), please install the latest version of `dds-cloudapi-sdk` and refer to [Grounded SAM 2 (with DINO-X)](#grounded-sam-2-image-demo-with-dino-x) and [Grounded SAM 2 Video (with DINO-X)](#grounded-sam-2-video-object-tracking-demo-with-custom-video-input-with-dino-x) for more details.
 - `2024/10/24`: Support [SAHI (Slicing Aided Hyper Inference)](https://docs.ultralytics.com/guides/sahi-tiled-inference/) on Grounded SAM 2 (with Grounding DINO 1.5) which may be helpful for inferencing high resolution image with dense small objects (e.g. **4K** images).
 - `2024/10/10`: Support `SAM-2.1` models, if you want to use `SAM 2.1` model, you need to update to the latest code and reinstall SAM 2 follow [SAM 2.1 Installation](https://github.com/facebookresearch/sam2?tab=readme-ov-file#latest-updates).
 - `2024/08/31`: Support `dump json results` in Grounded SAM 2 Image Demos (with Grounding DINO).
@@ -41,6 +41,7 @@ Grounded SAM 2 does not introduce significant methodological changes compared to
   - [Grounded SAM 2 Video Object Tracking Demo (with Grounding DINO 1.5 & 1.6)](#grounded-sam-2-video-object-tracking-demo-with-grounding-dino-15--16)
   - [Grounded SAM 2 Video Object Tracking with Custom Video Input (using Grounding DINO)](#grounded-sam-2-video-object-tracking-demo-with-custom-video-input-with-grounding-dino)
   - [Grounded SAM 2 Video Object Tracking with Custom Video Input (using Grounding DINO 1.5 & 1.6)](#grounded-sam-2-video-object-tracking-demo-with-custom-video-input-with-grounding-dino-15--16)
+  - [Grounded SAM 2 Video Object Tracking Demo (with DINO-X)](#grounded-sam-2-video-object-tracking-demo-with-custom-video-input-with-dino-x)
   - [Grounded SAM 2 Video Object Tracking with Continues ID (using Grounding DINO)](#grounded-sam-2-video-object-tracking-with-continuous-id-with-grounding-dino)
 - [Grounded SAM 2 Florence-2 Demos](#grounded-sam-2-florence-2-demos)
   - [Grounded SAM 2 Florence-2 Image Demo](#grounded-sam-2-florence-2-image-demo)
@@ -279,6 +280,14 @@ And we will automatically save the tracking visualization results in `OUTPUT_VID
 
 > [!WARNING]
 > We initialize the box prompts on the first frame of the input video. If you want to start from different frame, you can refine `ann_frame_idx` by yourself in our code.
+
+### Grounded SAM 2 Video Object Tracking Demo with Custom Video Input (with DINO-X)
+
+Users can upload their own video file (e.g. `assets/hippopotamus.mp4`) and specify their custom text prompts for grounding and tracking with DINO-X and SAM 2 by using the following scripts:
+
+```bash
+python grounded_sam2_tracking_demo_custom_video_input_dinox.py
+```
 
 ### Grounded-SAM-2 Video Object Tracking with Continuous ID (with Grounding DINO)
 
