@@ -1,6 +1,6 @@
 # Grounded SAM 2: Ground and Track Anything in Videos
 
-**[IDEA-Research](https://ai.meta.com/research/)**
+**[IDEA-Research](https://github.com/idea-research)**
 
 [Tianhe Ren](https://rentainhe.github.io/), [Shuo Shen](https://github.com/ShuoShenDe)
 
