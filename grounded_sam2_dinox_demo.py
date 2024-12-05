@@ -2,6 +2,7 @@
 from dds_cloudapi_sdk import Config
 from dds_cloudapi_sdk import Client
 from dds_cloudapi_sdk.tasks.dinox import DinoxTask
+from dds_cloudapi_sdk.tasks.types import DetectionTarget
 from dds_cloudapi_sdk import TextPrompt
 
 import os
@@ -64,7 +65,9 @@ if WITH_SLICE_INFERENCE:
         image_url = client.upload_file(temp_filename)
         task = DinoxTask(
             image_url=image_url,
-            prompts=[TextPrompt(text=TEXT_PROMPT)]
+            prompts=[TextPrompt(text=TEXT_PROMPT)],
+            bbox_threshold=0.25,
+            targets=[DetectionTarget.BBox],
         )
         client.run_task(task)
         result = task.result
@@ -103,7 +106,9 @@ else:
 
     task = DinoxTask(
         image_url=image_url,
-        prompts=[TextPrompt(text=TEXT_PROMPT)]
+        prompts=[TextPrompt(text=TEXT_PROMPT)],
+        bbox_threshold=0.25,
+        targets=[DetectionTarget.BBox],
     )
 
     client.run_task(task)

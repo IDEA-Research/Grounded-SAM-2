@@ -2,6 +2,7 @@
 from dds_cloudapi_sdk import Config
 from dds_cloudapi_sdk import Client
 from dds_cloudapi_sdk.tasks.dinox import DinoxTask
+from dds_cloudapi_sdk.tasks.types import DetectionTarget
 from dds_cloudapi_sdk import TextPrompt
 
 import os
@@ -26,7 +27,7 @@ TEXT_PROMPT = "hippopotamus."
 OUTPUT_VIDEO_PATH = "./hippopotamus_tracking_demo.mp4"
 SOURCE_VIDEO_FRAME_DIR = "./custom_video_frames"
 SAVE_TRACKING_RESULTS_DIR = "./tracking_results"
-API_TOKEN_FOR_GD1_5 = "Your API token"
+API_TOKEN_FOR_DINOX = "Your API token"
 PROMPT_TYPE_FOR_VIDEO = "box" # choose from ["point", "box", "mask"]
 BOX_THRESHOLD = 0.2
 
@@ -92,7 +93,7 @@ img_path = os.path.join(SOURCE_VIDEO_FRAME_DIR, frame_names[ann_frame_idx])
 image = Image.open(img_path)
 
 # Step 1: initialize the config
-config = Config(API_TOKEN_FOR_GD1_5)
+config = Config(API_TOKEN_FOR_DINOX)
 
 # Step 2: initialize the client
 client = Client(config)
@@ -104,7 +105,9 @@ image_url = client.upload_file(img_path)
 
 task = DinoxTask(
     image_url=image_url,
-    prompts=[TextPrompt(text=TEXT_PROMPT)]
+    prompts=[TextPrompt(text=TEXT_PROMPT)],
+    bbox_threshold=0.25,
+    targets=[DetectionTarget.BBox],
 )
 
 client.run_task(task)
