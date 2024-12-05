@@ -21,6 +21,8 @@ This repository is the official implementation of SAMURAI: Adapting Segment Anyt
 
 https://github.com/user-attachments/assets/9d368ca7-2e9b-4fed-9da0-d2efbf620d88
 
+All rights are reserved to the copyright owners (TM & © Universal (2019)). This clip is not intended for commercial use and is solely for academic demonstration in a research paper. Original source can be found [here](https://www.youtube.com/watch?v=cwUzUzpG8aM&t=4s).
+
 ## Getting Started
 
 #### SAMURAI Installation 
