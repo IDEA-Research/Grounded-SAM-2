@@ -145,3 +145,4 @@ dmypy.json
 outputs/
 
 .idea/
+demo/backend/checkpoints/*.pt
