@@ -1,9 +1,7 @@
 # dds cloudapi for Grounding DINO 1.5
 from dds_cloudapi_sdk import Config
 from dds_cloudapi_sdk import Client
-from dds_cloudapi_sdk.tasks.dinox import DinoxTask
-from dds_cloudapi_sdk.tasks.types import DetectionTarget
-from dds_cloudapi_sdk import TextPrompt
+from dds_cloudapi_sdk.tasks.v2_task import V2Task
 
 import os
 import cv2
@@ -27,6 +25,7 @@ IMG_PATH = "notebooks/images/cars.jpg"
 SAM2_CHECKPOINT = "./checkpoints/sam2.1_hiera_large.pt"
 SAM2_MODEL_CONFIG = "configs/sam2.1/sam2.1_hiera_l.yaml"
 BOX_THRESHOLD = 0.2
+IOU_THRESHOLD = 0.8
 WITH_SLICE_INFERENCE = False
 SLICE_WH = (480, 480)
 OVERLAP_RATIO = (0.2, 0.2)
@@ -48,7 +47,7 @@ config = Config(token)
 client = Client(config)
 
 # Step 3: run the task by DetectionTask class
-# image_url = "https://algosplt.oss-cn-shenzhen.aliyuncs.com/test_files/tasks/detection/iron_man.jpg"
+# infer_image_url = "https://algosplt.oss-cn-shenzhen.aliyuncs.com/test_files/tasks/detection/iron_man.jpg"
 # if you are processing local image file, upload them to DDS server to get the image url
 
 classes = [x.strip().lower() for x in TEXT_PROMPT.split('.') if x]
@@ -62,13 +61,18 @@ if WITH_SLICE_INFERENCE:
         with tempfile.NamedTemporaryFile(suffix='.jpg', delete=False) as tmpfile:
             temp_filename = tmpfile.name
         cv2.imwrite(temp_filename, image_slice)
-        image_url = client.upload_file(temp_filename)
-        task = DinoxTask(
-            image_url=image_url,
-            prompts=[TextPrompt(text=TEXT_PROMPT)],
-            bbox_threshold=0.25,
-            targets=[DetectionTarget.BBox],
-        )
+        infer_image_url = client.upload_file(temp_filename)
+        task = V2Task(api_path="/v2/task/dinox/detection", api_body={
+            "model": "DINO-X-1.0",
+            "image": infer_image_url,
+            "prompt": {
+                "type":"text",
+                "text":TEXT_PROMPT
+            },
+            "targets": ["bbox", "mask"],
+            "bbox_threshold": BOX_THRESHOLD,
+            "iou_threshold": IOU_THRESHOLD,
+        })
         client.run_task(task)
         result = task.result
         # detele the tempfile
@@ -77,7 +81,7 @@ if WITH_SLICE_INFERENCE:
         input_boxes = []
         confidences = []
         class_ids = []
-        objects = result.objects
+        objects = result["objects"]
         for idx, obj in enumerate(objects):
             input_boxes.append(obj.bbox)
             confidences.append(obj.score)
@@ -102,19 +106,26 @@ if WITH_SLICE_INFERENCE:
     class_ids = detections.class_id
     input_boxes = detections.xyxy
 else:
-    image_url = client.upload_file(IMG_PATH)
+    infer_image_url = client.upload_file(IMG_PATH)
 
-    task = DinoxTask(
-        image_url=image_url,
-        prompts=[TextPrompt(text=TEXT_PROMPT)],
-        bbox_threshold=0.25,
-        targets=[DetectionTarget.BBox],
+    task = V2Task(
+        api_path="/v2/task/dinox/detection",
+        api_body={
+            "model": "DINO-X-1.0",
+            "image": infer_image_url,
+            "prompt": {
+                "type":"text",
+                "text":TEXT_PROMPT
+            },
+            "targets": ["bbox", "mask"],
+            "bbox_threshold": BOX_THRESHOLD,
+            "iou_threshold": IOU_THRESHOLD,
+        }
     )
 
     client.run_task(task)
     result = task.result
-
-    objects = result.objects  # the list of detected objects
+    objects = result["objects"]  # the list of detected objects
 
 
     input_boxes = []
@@ -123,9 +134,9 @@ else:
     class_ids = []
 
     for idx, obj in enumerate(objects):
-        input_boxes.append(obj.bbox)
-        confidences.append(obj.score)
-        cls_name = obj.category.lower().strip()
+        input_boxes.append(obj["bbox"])
+        confidences.append(obj["score"])
+        cls_name = obj["category"].lower().strip()
         class_names.append(cls_name)
         class_ids.append(class_name_to_id[cls_name])
 
