@@ -1,4 +1,4 @@
-# dds cloudapi for Grounding DINO 1.5 - 更新至V2Task API
+# dds cloudapi for Grounding DINO 1.5 - Update to V2Task API
 from dds_cloudapi_sdk import Config
 from dds_cloudapi_sdk import Client
 from dds_cloudapi_sdk.tasks.v2_task import V2Task

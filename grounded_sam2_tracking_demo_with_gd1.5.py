@@ -1,10 +1,7 @@
-# dds cloudapi for Grounding DINO 1.5
+# dds cloudapi for Grounding DINO 1.5 - update to V2Task API
 from dds_cloudapi_sdk import Config
 from dds_cloudapi_sdk import Client
-from dds_cloudapi_sdk import DetectionTask
-from dds_cloudapi_sdk import TextPrompt
-from dds_cloudapi_sdk import DetectionModel
-from dds_cloudapi_sdk import DetectionTarget
+from dds_cloudapi_sdk.tasks.v2_task import V2Task
 
 import os
 import cv2
@@ -54,6 +51,11 @@ inference_state = video_predictor.init_state(video_path=video_dir)
 ann_frame_idx = 0  # the frame index we interact with
 ann_obj_id = 1  # give a unique id to each object we interact with (it can be any integers)
 
+# 添加参数设置
+TEXT_PROMPT = "children. pillow"
+BOX_THRESHOLD = 0.2
+IOU_THRESHOLD = 0.8
+
 
 """
 Step 2: Prompt Grounding DINO 1.5 with Cloud API for box coordinates
@@ -70,23 +72,29 @@ config = Config(token)
 # Step 2: initialize the client
 client = Client(config)
 
-# Step 3: run the task by DetectionTask class
-# image_url = "https://algosplt.oss-cn-shenzhen.aliyuncs.com/test_files/tasks/detection/iron_man.jpg"
+# Step 3: run the task using V2Task class
 # if you are processing local image file, upload them to DDS server to get the image url
 image_url = client.upload_file(img_path)
 
-task = DetectionTask(
-    image_url=image_url,
-    prompts=[TextPrompt(text="children. pillow")],
-    targets=[DetectionTarget.BBox],  # detect bbox
-    model=DetectionModel.GDino1_5_Pro,  # detect with GroundingDino-1.5-Pro model
-    bbox_threshold=0.2,
+task = V2Task(
+    api_path="/v2/task/grounding_dino/detection",
+    api_body={
+        "model": "GroundingDino-1.5-Pro",
+        "image": image_url,
+        "prompt": {
+            "type": "text",
+            "text": TEXT_PROMPT
+        },
+        "targets": ["bbox"],
+        "bbox_threshold": BOX_THRESHOLD,
+        "iou_threshold": IOU_THRESHOLD,
+    }
 )
 
 client.run_task(task)
 result = task.result
 
-objects = result.objects  # the list of detected objects
+objects = result["objects"]  # the list of detected objects
 
 
 input_boxes = []
@@ -94,9 +102,9 @@ confidences = []
 class_names = []
 
 for idx, obj in enumerate(objects):
-    input_boxes.append(obj.bbox)
-    confidences.append(obj.score)
-    class_names.append(obj.category)
+    input_boxes.append(obj["bbox"])
+    confidences.append(obj["score"])
+    class_names.append(obj["category"])
 
 input_boxes = np.array(input_boxes)
 

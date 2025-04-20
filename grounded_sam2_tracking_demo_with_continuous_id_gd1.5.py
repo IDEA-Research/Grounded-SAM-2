@@ -1,11 +1,7 @@
-# dds cloudapi for Grounding DINO 1.5
+# dds cloudapi for Grounding DINO 1.5 - update to V2Task API
 from dds_cloudapi_sdk import Config
 from dds_cloudapi_sdk import Client
-from dds_cloudapi_sdk import DetectionTask
-from dds_cloudapi_sdk import TextPrompt
-from dds_cloudapi_sdk import DetectionModel
-from dds_cloudapi_sdk import DetectionTarget
-
+from dds_cloudapi_sdk.tasks.v2_task import V2Task
 
 import os
 import torch
@@ -51,6 +47,9 @@ grounding_model = AutoModelForZeroShotObjectDetection.from_pretrained(model_id).
 # setup the input image and text prompt for SAM 2 and Grounding DINO
 # VERY important: text queries need to be lowercased + end with a dot
 text = "car."
+BOX_THRESHOLD = 0.2
+IOU_THRESHOLD = 0.8
+GROUNDING_MODEL = "GroundingDino-1.6-Pro" # 使用字符串替代枚举值
 
 # `video_dir` a directory of JPEG frames with filenames like `<frame_index>.jpg`  
 video_dir = "notebooks/videos/car"
@@ -102,24 +101,32 @@ for start_frame_idx in range(0, len(frame_names), step):
     client = Client(config)
     
     image_url = client.upload_file(img_path)
-    task = DetectionTask(
-        image_url=image_url,
-        prompts=[TextPrompt(text=text)],
-        targets=[DetectionTarget.BBox],  # detect bbox
-        model=DetectionModel.GDino1_6_Pro,  # detect with GroundingDino-1.5-Pro model
+    task = V2Task(
+        api_path="/v2/task/grounding_dino/detection",
+        api_body={
+            "model": GROUNDING_MODEL,
+            "image": image_url,
+            "prompt": {
+                "type": "text",
+                "text": text
+            },
+            "targets": ["bbox"],
+            "bbox_threshold": BOX_THRESHOLD,
+            "iou_threshold": IOU_THRESHOLD,
+        }
     )
     client.run_task(task)
     result = task.result
 
-    objects = result.objects  # the list of detected objects
+    objects = result["objects"]  # the list of detected objects
     input_boxes = []
     confidences = []
     class_names = []
 
     for idx, obj in enumerate(objects):
-        input_boxes.append(obj.bbox)
-        confidences.append(obj.score)
-        class_names.append(obj.category)
+        input_boxes.append(obj["bbox"])
+        confidences.append(obj["score"])
+        class_names.append(obj["category"])
 
     input_boxes = np.array(input_boxes)
     OBJECTS = class_names
@@ -154,7 +161,7 @@ for start_frame_idx in range(0, len(frame_names), step):
 
 
         
-        objects_count = mask_dict.update_masks(tracking_annotation_dict=sam2_masks, iou_threshold=0.8, objects_count=objects_count)
+        objects_count = mask_dict.update_masks(tracking_annotation_dict=sam2_masks, iou_threshold=IOU_THRESHOLD, objects_count=objects_count)
         print("objects_count", objects_count)
     
     else:
