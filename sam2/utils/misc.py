@@ -8,6 +8,7 @@ import os
 import warnings
 from threading import Thread
 
+from typing import Tuple
 import numpy as np
 import torch
 from PIL import Image
@@ -208,6 +209,74 @@ def load_video_frames(
         raise NotImplementedError(
             "Only MP4 video and JPEG folder are supported at this moment"
         )
+
+def process_stream_frame(
+    img_array: np.ndarray,
+    image_size: int,
+    img_mean: Tuple[float, float, float] = (0.485, 0.456, 0.406),
+    img_std:  Tuple[float, float, float] = (0.229, 0.224, 0.225),
+    offload_to_cpu: bool = False,
+    compute_device: torch.device = torch.device("cuda"),
+):
+    """
+    Convert a raw image array (H,W,3 or 3,H,W) into a model‑ready tensor.
+    Steps
+    -----
+    1. Resize the shorter side to `image_size`, keeping aspect ratio,
+       then center‑crop/pad to `image_size` × `image_size`.
+    2. Change layout to [3, H, W] and cast to float32 in [0,1].
+    3. Normalise with ImageNet statistics.
+    4. Optionally move to `compute_device`.
+    Returns
+    -------
+    img_tensor : torch.FloatTensor  # shape [3, image_size, image_size]
+    orig_h     : int
+    orig_w     : int
+    """
+
+    # ↪ uses your existing helper so behaviour matches the batch loader
+    img_tensor, orig_h, orig_w = _resize_and_convert_to_tensor(img_array, image_size)
+
+    # Normalisation (done *after* potential device move for efficiency)
+    img_mean_t = torch.tensor(img_mean, dtype=torch.float32)[:, None, None]
+    img_std_t  = torch.tensor(img_std,  dtype=torch.float32)[:, None, None]
+
+    if not offload_to_cpu:
+        img_tensor = img_tensor.to(compute_device)
+        img_mean_t = img_mean_t.to(compute_device)
+        img_std_t  = img_std_t.to(compute_device)
+
+    img_tensor.sub_(img_mean_t).div_(img_std_t)
+
+    return img_tensor, orig_h, orig_w
+
+
+def _resize_and_convert_to_tensor(img_array, image_size):
+    """
+    Resize the input image array and convert it into a tensor.
+    Also return original image height and width.
+    """
+    # Convert numpy array to PIL image and ensure RGB
+    img_pil = Image.fromarray(img_array).convert("RGB")
+
+    # Save original size (PIL: size = (width, height))
+    video_width, video_height = img_pil.size
+
+    # Resize with high-quality LANCZOS filter
+    img_resized = img_pil.resize((image_size, image_size), Image.Resampling.LANCZOS)
+
+    # Convert resized image back to numpy and then to float tensor
+    img_resized_array = np.array(img_resized)
+
+    if img_resized_array.dtype == np.uint8:
+        img_resized_array = img_resized_array / 255.0
+    else:
+        raise RuntimeError(f"Unexpected dtype: {img_resized_array.dtype}")
+
+    # Convert to PyTorch tensor and permute to [C, H, W]
+    img_tensor = torch.from_numpy(img_resized_array).permute(2, 0, 1)
+
+    return img_tensor, video_height, video_width
 
 
 def load_video_frames_from_jpg_images(

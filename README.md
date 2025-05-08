@@ -335,6 +335,16 @@ python grounded_sam2_tracking_demo_with_continuous_id_plus.py
 
 ```
 
+### Grounded-SAM-2 Real-Time Object Tracking with Continuous ID (Live Video / Camera Stream)
+
+This method enables **real-time object tracking** with **ID continuity** from a live camera or video stream. 
+
+```bash
+python grounded_sam2_tracking_camera_with_continuous_id.py
+```
+
+
+
 ## Grounded SAM 2 Florence-2 Demos
 ### Grounded SAM 2 Florence-2 Image Demo
 
