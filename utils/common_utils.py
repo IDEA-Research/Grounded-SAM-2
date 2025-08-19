@@ -81,12 +81,13 @@ class CommonUtils:
                     object_id_to_name[instance_id] = class_name
             
             # Adjust object id and boxes to ascending order
-            paired_id_and_box = zip(all_object_ids, all_object_boxes)
+            paired_id_and_box = zip(all_object_ids, all_object_boxes, all_class_names)
             sorted_pair = sorted(paired_id_and_box, key=lambda pair: pair[0])
             
             # Because we get the mask data as ascending order, so we also need to ascend box and ids
             all_object_ids = [pair[0] for pair in sorted_pair]
             all_object_boxes = [pair[1] for pair in sorted_pair]
+            all_class_names = [pair[2] for pair in sorted_pair]
             
             detections = sv.Detections(
                 xyxy=np.array(all_object_boxes),
