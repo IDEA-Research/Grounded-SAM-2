@@ -25,6 +25,7 @@ TEXT_THRESHOLD = 0.25
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 OUTPUT_DIR = Path("outputs/grounded_sam2_local_demo")
 DUMP_JSON_RESULTS = True
+MULTIMASK_OUTPUT = False
 
 # create output directory
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -82,8 +83,15 @@ masks, scores, logits = sam2_predictor.predict(
     point_coords=None,
     point_labels=None,
     box=input_boxes,
-    multimask_output=False,
+    multimask_output=MULTIMASK_OUTPUT,
 )
+
+"""
+Sample the best mask according to the score
+"""
+if MULTIMASK_OUTPUT:
+    best = np.argmax(scores, axis=1)                     
+    masks = masks[np.arange(masks.shape[0]), best]       
 
 """
 Post-process the output of the model to get the masks, scores, and logits for visualization
