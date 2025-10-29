@@ -95,7 +95,7 @@ for start_frame_idx in range(0, len(frame_names), step):
     results = processor.post_process_grounded_object_detection(
         outputs,
         inputs.input_ids,
-        box_threshold=0.25,
+        threshold=0.25,
         text_threshold=0.25,
         target_sizes=[image.size[::-1]]
     )
