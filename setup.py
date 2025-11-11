@@ -88,8 +88,8 @@ def get_extensions():
         return []
 
     try:
-        from torch.utils.cpp_extension import CUDAExtension
-
+        from torch.utils.cpp_extension import CUDAExtension, CUDA_HOME
+        import subprocess, re
         srcs = ["sam2/csrc/connected_components.cu"]
         compile_args = {
             "cxx": [],
@@ -98,9 +98,28 @@ def get_extensions():
                 "-D__CUDA_NO_HALF_OPERATORS__",
                 "-D__CUDA_NO_HALF_CONVERSIONS__",
                 "-D__CUDA_NO_HALF2_OPERATORS__",
-                "-gencode=arch=compute_120,code=sm_120",
+                "-gencode=arch=compute_70,code=sm_70",
+                "-gencode=arch=compute_75,code=sm_75",
+                "-gencode=arch=compute_80,code=sm_80",
+                "-gencode=arch=compute_86,code=sm_86",
             ],
         }
+        cuda_version = None
+        try:
+            nvcc_output = subprocess.check_output([os.path.join(CUDA_HOME, "bin", "nvcc"), "--version"]).decode("utf-8")
+            match = re.search(r"release (\d+\.\d+)", nvcc_output)
+            if match:
+                cuda_version = float(match.group(1))
+                print(f"Detected CUDA version: {cuda_version}")
+        except Exception as e:
+            print(f"Warning: Could not detect CUDA version: {e}")
+        # sm_120: supported since CUDA 12.8 (RTX 5090, Blackwell)
+        if cuda_version is not None and cuda_version >= 12.8:
+            compile_args["nvcc"].append("-gencode=arch=compute_120,code=sm_120")  # RTX 5090
+        elif cuda_version is not None and cuda_version < 12.8:
+            print(" WARNING: CUDA version < 12.8 detected. RTX 5090/Blackwell (sm_120) will NOT be supported.")
+            print(" To use RTX 5090 or Blackwell GPUs, please upgrade to CUDA 12.8 or higher and recompile.")
+
         ext_modules = [CUDAExtension("sam2._C", srcs, extra_compile_args=compile_args)]
     except Exception as e:
         if BUILD_ALLOW_ERRORS:
