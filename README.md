@@ -131,8 +131,46 @@ python grounded_sam2_hf_model_demo.py
 ```bash
 python grounded_sam2_local_demo.py
 ```
+---
+### 🚨 🆕 Local CLI Demo
 
+```bash
 
+python grounded_sam2_local_demo_cli.py
+
+```
+
+### **Why This CLI/Argparse Code Was Created**
+
+The addition of the CLI (Command-Line Interface) using `argparse` in the `grounded_sam2_local_demo.py` script was created due the following key reasons:
+
+### **1. Improved Usability**
+
+- The original implementation (`grounded_sam2_local_demo.py`) relies on hardcoded paths for input images, model checkpoints, and output directories. This made it inflexible and difficult to adapt to different configurations of the models.
+- By introducing `argparse`, users can now specify paths and parameters dynamically via command-line arguments, making the script more user-friendly and adaptable to various use cases.
+
+### 2. **Container Compatibility**
+
+- The original implementation faced issues when running in containerized environments (e.g., Docker, Apptainer) due to hardcoded paths. The CLI resolves this by allowing users to mount directories and pass paths dynamically, ensuring compatibility with containerized workflows.
+
+> ### **How to Use the CLI**
+> The script can be used as follows:
+>```bash
+> python grounded_sam2_local_demo_cli.py \
+>    --text_prompt "car. tire." \                        # Text prompt for object grounding and segmentation
+>    --img_path "path/to/image.jpg" \                    # Path to the input image
+>    --sam2_checkpoint "path/to/sam2_checkpoint.pt" \    # Path to the SAM2 checkpoint (Torch model)
+>    --sam2_config_root "sam2/configs/sam2.1/" \         # Directory where Hydra will look for SAM2 configs
+>    --sam2_model_config "sam2_config.yaml" \            # Just the config filename (Hydra uses the path above)
+>    --grounding_dino_config "path/to/config.py" \       # Path to Grounding DINO config (Python file)
+>    --grounding_dino_checkpoint "path/to/model.pth" \   # Path to Grounding DINO checkpoint (PyTorch model)
+>    --output_dir "path/to/output_dir" \                 # Output directory to save results
+>    --box_threshold 0.35 \                              # Threshold for filtering predicted boxes
+>    --text_threshold 0.25 \                             # Threshold for matching text to visual features
+>    --dump_json_results                                 # (Optional) Saves the prediction results as a JSON file
+>```
+
+---
 ### Grounded SAM 2 Image Demo (with Grounding DINO 1.5 & 1.6)
 
 We've already released our most capable open-set detection model [Grounding DINO 1.5 & 1.6](https://github.com/IDEA-Research/Grounding-DINO-1.5-API), which can be combined with SAM 2 for stronger open-set detection and segmentation capability. You can apply the API token first and run Grounded SAM 2 with Grounding DINO 1.5 as follows:
