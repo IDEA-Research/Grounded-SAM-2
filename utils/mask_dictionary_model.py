@@ -81,7 +81,7 @@ class MaskDictionaryModel:
         union = mask1.sum() + mask2.sum() - intersection
         
         # Calculate IoU
-        iou = intersection / union
+        iou = intersection / union.clamp(min=1e-6)
         return iou
 
 

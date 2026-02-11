@@ -175,7 +175,7 @@ def calculate_stability_score(
         .sum(-1, dtype=torch.int16)
         .sum(-1, dtype=torch.int32)
     )
-    return intersections / unions
+    return intersections / unions.clamp(min=1)
 
 
 def build_point_grid(n_per_side: int) -> np.ndarray:
